@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
  * @author TimcatCai
  * @version 2019/06/27
  */
-public class ServerNetworkManagerImp implements NetworkManager {
+public class ConnectorNetworkManagerImp implements NetworkManager {
     private final static int BUFFER_SIZE = 10;
     private final static int USER_DATA_TRANSFER_DEFAULT_PORT = 20;
 
@@ -24,12 +24,12 @@ public class ServerNetworkManagerImp implements NetworkManager {
     private String userHostName;
     private Socket serverDataTransferSocket;
 
-    public ServerNetworkManagerImp(String userHostName, int userDataTransferPort) {
+    public ConnectorNetworkManagerImp(String userHostName, int userDataTransferPort) {
         this.userHostName = userHostName;
         this.userDataTransferPort = userDataTransferPort;
     }
 
-    public ServerNetworkManagerImp() {
+    public ConnectorNetworkManagerImp() {
         this.userHostName = "127.0.0.1";
         this.userDataTransferPort = USER_DATA_TRANSFER_DEFAULT_PORT;
     }

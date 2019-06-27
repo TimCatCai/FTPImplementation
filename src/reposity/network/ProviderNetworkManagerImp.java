@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author TimcatCai
  * @version 2019/06/27
  */
-public class UserNetworkManagerImp implements NetworkManager {
+public class ProviderNetworkManagerImp implements NetworkManager {
     private ServerSocket userDataTransferringSocket;
     private final  static int  BUFFER_SIZE = 10;
     /**
@@ -19,11 +19,11 @@ public class UserNetworkManagerImp implements NetworkManager {
     private int userDataPort;
     private final  static int DEFAULT_USER_DATA_TRANSFER_PORT = 20;
     private Socket socketConnected;
-    public UserNetworkManagerImp(int userDataPort) {
+    public ProviderNetworkManagerImp(int userDataPort) {
         this.userDataPort = userDataPort;
     }
 
-    public UserNetworkManagerImp(){
+    public ProviderNetworkManagerImp(){
         userDataPort = DEFAULT_USER_DATA_TRANSFER_PORT;
 
     }

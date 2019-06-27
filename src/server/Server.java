@@ -1,13 +1,8 @@
 package server;
 
 import process.*;
-import reposity.network.ServerNetworkManagerImp;
-import server.Commands.State;
+import reposity.network.ConnectorNetworkManagerImp;
 
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Server {
@@ -17,7 +12,7 @@ public class Server {
         while (true) {
 
             ProtocolInterpreterable protocolInterpreterable = new UserProtocolInterper();
-            new DataTransferProcess(new ServerNetworkManagerImp(), protocolInterpreterable)
+            new DataTransferProcess(new ConnectorNetworkManagerImp(), protocolInterpreterable)
                     .sentData(new FileEvent("G:\\temp\\server.txt", DataDirection.SENT));
             TimeUnit.SECONDS.sleep(500);
         }
