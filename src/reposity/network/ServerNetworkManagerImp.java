@@ -64,10 +64,6 @@ public class ServerNetworkManagerImp implements NetworkManager {
             }
             result = true;
             System.out.println("===========Sent!=============");
-            TimeUnit.SECONDS.sleep(5);
-            serverDataTransferSocket.close();
-        }catch (InterruptedException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,7 +107,7 @@ public class ServerNetworkManagerImp implements NetworkManager {
     }
 
     @Override
-    public String acceptString(String data) {
+    public String acceptString() {
         return null;
     }
 

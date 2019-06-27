@@ -28,5 +28,5 @@ public interface NetworkManager {
 
     boolean sentString(String data);
 
-    String acceptString(String data);
+    String acceptString();
 }

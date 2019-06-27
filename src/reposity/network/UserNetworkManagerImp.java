@@ -85,7 +85,7 @@ public class UserNetworkManagerImp implements NetworkManager {
     }
 
     @Override
-    public String acceptString(String data) {
+    public String acceptString() {
         String result = null;
         if(isConnected()){
             try {
