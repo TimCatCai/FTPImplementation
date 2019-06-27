@@ -17,14 +17,14 @@ public class DataTransferProcessThread implements Runnable {
     private EventQueue dataEventsList;
     private FileAccess fileAccess;
     private NetworkManager DTPNetworkManager;
-    private ServerProcessable protocolInterpreter;
+    private ServerProcessable managerThreadable;
 
     public DataTransferProcessThread(FileAccess fileAccess, NetworkManager networkManager,
                                      ServerProcessable protocolInterpreter,
                                      EventQueue dataEventsList) {
         this.fileAccess = fileAccess;
         this.DTPNetworkManager = networkManager;
-        this.protocolInterpreter = protocolInterpreter;
+        this.managerThreadable = protocolInterpreter;
         this.dataEventsList = dataEventsList;
     }
 
@@ -35,10 +35,26 @@ public class DataTransferProcessThread implements Runnable {
             if (event instanceof FileEvent) {
                 if (event.getDirection() == DataDirection.SENT) {
                     InputStream in = fileAccess.readFile(((FileEvent) event).getPath());
-                    DTPNetworkManager.sentFile(in);
+                    //reject to read file
+                    if(in == null){
+                        managerThreadable.replyOperationResult(new Event("reject to read file",DataDirection.OWN));
+                    }else{
+                        DTPNetworkManager.sentFile(in);
+                        event.setDirection(DataDirection.OWN);
+                        managerThreadable.replyOperationResult(event);
+                    }
+
                 } else if (event.getDirection() == DataDirection.RECEIVE) {
                     OutputStream out = fileAccess.writeFile(((FileEvent) event).getPath());
-                    DTPNetworkManager.receiveFile(out);
+                    //reject to write file
+                    if(out == null){
+                        managerThreadable.replyOperationResult(new Event("reject to write file",DataDirection.OWN));
+                    }else{
+                        DTPNetworkManager.receiveFile(out);
+                        event.setDirection(DataDirection.OWN);
+                        managerThreadable.replyOperationResult(event);
+                    }
+
                 }
             } else if (event instanceof StringEvent) {
                 String result;
@@ -46,7 +62,8 @@ public class DataTransferProcessThread implements Runnable {
                     DTPNetworkManager.sentString(event.getData());
                 } else if (event.getDirection() == DataDirection.RECEIVE) {
                     result = DTPNetworkManager.acceptString();
-                    protocolInterpreter.replyOperationResult(new StringEvent(result, null));
+                    event.setData(result);
+                    managerThreadable.replyOperationResult(event);
                 }
             }
         }

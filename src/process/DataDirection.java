@@ -13,5 +13,9 @@ public enum DataDirection {
     /**
      * accept from another end
      */
-    RECEIVE
+    RECEIVE,
+    /**
+     * own thread data
+     */
+    OWN
 }

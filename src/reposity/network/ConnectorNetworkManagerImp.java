@@ -55,6 +55,7 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
                     System.out.println(buffer);
                 }
                 result = true;
+
                 System.out.println("===========Sent!=============");
             } catch (IOException e) {
                 e.printStackTrace();

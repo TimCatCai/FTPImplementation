@@ -10,6 +10,8 @@ public abstract class AbstractCommand {
     protected String [] parameters;
     protected State currentSate;
     protected State firstState;
+    protected int successCode;
+    protected int failureCode;
 
     protected AbstractCommand(String name, String description, int parameterNumber,String [] parameters) {
         this.name = name;
@@ -49,5 +51,13 @@ public abstract class AbstractCommand {
 
     public State getFirstState() {
         return firstState;
+    }
+
+    public int getSuccessCode() {
+        return successCode;
+    }
+
+    public int getFailureCode() {
+        return failureCode;
     }
 }

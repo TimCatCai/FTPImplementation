@@ -6,19 +6,25 @@ package process;
  */
 public class Event  {
     private String data;
-    private final DataDirection direction;
+    private  DataDirection direction;
     public Event(String data,DataDirection direction){
         this.data = data;
         this.direction = direction;
     }
 
-    protected String getData() {
+    public String getData() {
         return data;
     }
 
-    protected DataDirection getDirection() {
+    public DataDirection getDirection() {
         return direction;
     }
 
+    public void setDirection(DataDirection direction) {
+        this.direction = direction;
+    }
 
+    public void setData(String data) {
+        this.data = data;
+    }
 }

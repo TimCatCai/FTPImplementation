@@ -11,4 +11,6 @@ public interface ServerProcessable {
      * @param response
      */
      void replyOperationResult(Event response);
+
+     void newCommandReady(Event newCommand);
 }
