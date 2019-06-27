@@ -11,7 +11,8 @@ public class CommandsRepo {
                 "USER",
             " USER <SP> <username> <CRLF>\n" +
                         "<username> ::= <string>",
-      1
+      1,
+                null
                 ));
 
 

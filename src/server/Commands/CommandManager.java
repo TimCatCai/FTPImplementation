@@ -5,6 +5,11 @@ public class CommandManager implements CommandManagerable {
 
     @Override
     public Reply parse(AbstractCommand command) {
-        return null;
+        AbstractCommand realCommand = CommandsRepo.getCommand(command.getName());
+        if(realCommand == null){
+            return ReplyRepo.getReply(ReplyRepo.NO_SUCH_COMMAND);
+        }else{
+             return realCommand.execute(command.getParameters());
+        }
     }
 }

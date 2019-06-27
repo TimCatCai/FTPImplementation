@@ -7,16 +7,18 @@ public abstract class AbstractCommand {
     protected final String name;
     protected String description;
     protected int parameterNumber;
+    protected String [] parameters;
     protected State currentSate;
     protected State firstState;
 
-    protected AbstractCommand(String name, String description, int parameterNumber) {
+    protected AbstractCommand(String name, String description, int parameterNumber,String [] parameters) {
         this.name = name;
         this.description = description;
         this.parameterNumber = parameterNumber;
+        this.parameters = parameters;
     }
 
-    public abstract boolean execute(String [] parameters);
+    public abstract Reply execute(String [] parameters);
 
 
     public void setDescription(String description) {
@@ -26,6 +28,10 @@ public abstract class AbstractCommand {
     public String getName() {
 
         return name;
+    }
+
+    public String[] getParameters() {
+        return parameters;
     }
 
     public String getDescription() {

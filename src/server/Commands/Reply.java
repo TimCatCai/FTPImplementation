@@ -1,15 +1,15 @@
 package server.Commands;
 
 public class Reply {
-    private String stateCode;
+    private int stateCode;
     private String description;
 
-    public Reply(String stateCode, String description) {
+    public Reply(int stateCode, String description) {
         this.stateCode = stateCode;
         this.description = description;
     }
 
-    public String getStateCode() {
+    public int getStateCode() {
         return stateCode;
     }
 

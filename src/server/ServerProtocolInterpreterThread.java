@@ -1,10 +1,8 @@
 package server;
 
-import java.net.Socket;
-
 public class ServerProtocolInterpreterThread implements Runnable {
 
-    public ServerProtocolInterpreterThread(Socket userSocket, ){
+    public ServerProtocolInterpreterThread(){
 
     }
     @Override
