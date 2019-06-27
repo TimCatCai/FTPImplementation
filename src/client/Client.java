@@ -1,36 +1,23 @@
 package client;
 
 
-import reposity.file.PathAccess;
-import reposity.file.PathController;
+import process.*;
 import reposity.network.UserNetworkManagerImp;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
 public class Client {
-    public static void main(String[] args) {
-//        Path basePath = Paths.get("G:\\temp");
-//
-//        try {
-//            Files.createDirectory(basePath);
-//            Path tempPath = basePath.resolve("test.txt");
-//            Files.createFile(tempPath);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    public static void main(String[] args) throws InterruptedException {
+        ProtocolInterpreterable pro = new UserProtocolInterper();
+        UserNetworkManagerImp userDTP = new UserNetworkManagerImp();
+        userDTP.openDataServerSocket();
+        DataTransferProcess dataTransferProcess = new DataTransferProcess(userDTP
+        ,pro);
 
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream("G:\\temp\\user.txt");
-            UserNetworkManagerImp user = new UserNetworkManagerImp();
-            user.openDataServerSocket(fileOutputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
+        dataTransferProcess.receiveData(new FileEvent("G:\\temp\\user.txt",DataDirection.RECEIVE));
+        TimeUnit.SECONDS.sleep(500);
     }
 
 

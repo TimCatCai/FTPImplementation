@@ -21,15 +21,20 @@ public class EventQueue {
         synchronized(dataEventsList){
             if(dataEventsList.isEmpty()){
                 try {
+                    System.out.println("queue is empty");
                     dataEventsList.wait();
+                    System.out.println("get event");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
             }
+
+            Event event = dataEventsList.removeFirst();
+            this.dataEventsList.notify();
+            return event;
         }
-        Event event = dataEventsList.removeFirst();
-        this.dataEventsList.notify();
-        return event;
+
     }
 
     public void addEvent(Event event){
@@ -41,9 +46,11 @@ public class EventQueue {
                     e.printStackTrace();
                 }
             }
+            this.dataEventsList.add(event);
+            System.out.println("Add");
+            this.dataEventsList.notify();
         }
-        this.dataEventsList.add(event);
-        event.notify();
+
     }
 
     private  boolean isDataEventsListFull(){

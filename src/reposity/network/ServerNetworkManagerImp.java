@@ -3,7 +3,6 @@ package reposity.network;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.TimeUnit;
 
 /**
  * the server data transfer process = server_DPI
@@ -44,29 +43,32 @@ public class ServerNetworkManagerImp implements NetworkManager {
     @Override
     public boolean sentFile(InputStream in) {
         boolean result = false;
+        boolean connectable = true;
         if (!isConnectionValid()) {
-            connectToUserDataTransferProcess();
+            connectable = connectToUserDataTransferProcess();
+        }
+        if(connectable){
+            try {
+                OutputStream socketOutputStream = serverDataTransferSocket.getOutputStream();
+                DataOutputStream networkOutputStream = new DataOutputStream(
+                        new BufferedOutputStream(socketOutputStream)
+                );
+                DataInputStream fileInputStream = new DataInputStream(
+                        new BufferedInputStream(in)
+                );
+                byte[] buffer = new byte[BUFFER_SIZE];
+                while (fileInputStream.read(buffer) != -1) {
+                    networkOutputStream.write(buffer);
+                    networkOutputStream.flush();
+                    System.out.println(buffer);
+                }
+                result = true;
+                System.out.println("===========Sent!=============");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        try {
-            OutputStream socketOutputStream = serverDataTransferSocket.getOutputStream();
-            DataOutputStream networkOutputStream = new DataOutputStream(
-                    new BufferedOutputStream(socketOutputStream)
-            );
-            DataInputStream fileInputStream = new DataInputStream(
-                    new BufferedInputStream(in)
-            );
-            byte[] buffer = new byte[BUFFER_SIZE];
-            while (fileInputStream.read(buffer) != -1) {
-                networkOutputStream.write(buffer);
-                networkOutputStream.flush();
-                System.out.println(buffer);
-            }
-            result = true;
-            System.out.println("===========Sent!=============");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return result;
     }
 
@@ -98,6 +100,7 @@ public class ServerNetworkManagerImp implements NetworkManager {
 
                 stringOut.print(data);
                 result = true;
+                socketOutputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

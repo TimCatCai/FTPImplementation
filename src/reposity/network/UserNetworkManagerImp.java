@@ -25,9 +25,10 @@ public class UserNetworkManagerImp implements NetworkManager {
 
     public UserNetworkManagerImp(){
         userDataPort = DEFAULT_USER_DATA_TRANSFER_PORT;
+
     }
 
-    public void openDataServerSocket(OutputStream out){
+    public void openDataServerSocket( ){
         /**
          * @TODO remember to start a new thread for the ServerSocket
          * @TODO remember to solve the problem how to sent the dataOutputStream to the thread
@@ -35,9 +36,6 @@ public class UserNetworkManagerImp implements NetworkManager {
         try {
             userDataTransferringSocket = new ServerSocket(this.userDataPort);
             socketConnected = userDataTransferringSocket.accept();
-            if(receiveFile(out)) {
-                System.out.println("Accept the file successfully");
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,19 +55,22 @@ public class UserNetworkManagerImp implements NetworkManager {
                DataInputStream networkData = new DataInputStream(
                        new BufferedInputStream(inputStreamOfSocket)
                );
+
                DataOutputStream fileOutStream = new DataOutputStream(
                        new BufferedOutputStream(out)
                );
-
                /**
                 * @TODO check the size of file
                 */
                byte [] buffer = new  byte[BUFFER_SIZE];
-               while(networkData.read(buffer) != -1){
+               int length;
+               while((length = networkData.read(buffer)) != -1 && networkData.available() != 0){
                    fileOutStream.write(buffer);
-                   System.out.println(buffer);
+                   fileOutStream.flush();
+                   System.out.println(""+buffer+length);
                }
-               fileOutStream.flush();
+
+               System.out.println("end");
                result = true;
            } catch (IOException e) {
                e.printStackTrace();
