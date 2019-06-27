@@ -17,8 +17,8 @@ public class DataTransferProcess implements DataTransferProcessable{
     private FilesController filesController;
     private NetworkManager networkManager;
     private ThreadPoolExecutor DTPThread;
-    private ServerProcessable protocolInterpreter;
-    public DataTransferProcess(NetworkManager networkManager, ServerProcessable protocolInterpreter){
+    private ManagerProcessable protocolInterpreter;
+    public DataTransferProcess(NetworkManager networkManager, ManagerProcessable protocolInterpreter){
         this.eventQueue = new EventQueue();
         filesController = new FilesController();
         this.networkManager  = networkManager;

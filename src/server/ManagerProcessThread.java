@@ -9,17 +9,17 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Arrays;
 
-public class ServerProcessThread implements Runnable , ServerProcessable {
+public class ManagerProcessThread implements Runnable , ManagerProcessable {
     private Socket socketToUser;
     private DataTransferProcessable commandsTransferProcess;
     private CommandManagerable commandManager;
-    private ServerProcessable PIInterface;
+    private ManagerProcessable PIInterface;
     private EventQueue serverProcessThreadEventQueue;
     private  AbstractCommand commandReceived;
 
     private static int SERVER_PI_DEFAULT_PORT = 21;
 
-    public ServerProcessThread(Socket socketToUser) {
+    public ManagerProcessThread(Socket socketToUser) {
         this.socketToUser = socketToUser;
         NetworkManager serverPINetworkManager = new ProviderNetworkManagerImp(SERVER_PI_DEFAULT_PORT);
         PIInterface = new ProtocolInterperImp();

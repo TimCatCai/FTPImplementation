@@ -10,7 +10,7 @@ public class Server {
 
         while (true) {
 
-            ServerProcessable serverProcessable = new ProtocolInterperImp();
+            ManagerProcessable serverProcessable = new ProtocolInterperImp();
             new DataTransferProcess(new ConnectorNetworkManagerImp(), serverProcessable)
                     .sentData(new FileEvent("G:\\temp\\server.txt", DataDirection.SENT));
             TimeUnit.SECONDS.sleep(500);

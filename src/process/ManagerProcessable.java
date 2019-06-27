@@ -5,7 +5,7 @@ package process;
  * @author TimcatCai
  * @version 2019/06/27
  */
-public interface ServerProcessable {
+public interface ManagerProcessable {
     /**
      *
      * @param response

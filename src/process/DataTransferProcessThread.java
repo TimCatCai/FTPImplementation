@@ -17,10 +17,10 @@ public class DataTransferProcessThread implements Runnable {
     private EventQueue dataEventsList;
     private FileAccess fileAccess;
     private NetworkManager DTPNetworkManager;
-    private ServerProcessable managerThreadable;
+    private ManagerProcessable managerThreadable;
 
     public DataTransferProcessThread(FileAccess fileAccess, NetworkManager networkManager,
-                                     ServerProcessable protocolInterpreter,
+                                     ManagerProcessable protocolInterpreter,
                                      EventQueue dataEventsList) {
         this.fileAccess = fileAccess;
         this.DTPNetworkManager = networkManager;
