@@ -7,13 +7,12 @@ import server.Commands.*;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.util.LinkedList;
 
-public class ServerProcessThread implements Runnable ,ProtocolInterpreterable{
+public class ServerProcessThread implements Runnable , ServerProcessable {
     private Socket socketToUser;
     private DataTransferProcessable commandsTransferProcess;
     private CommandManagerable commandManager;
-    private ProtocolInterpreterable PIInterface;
+    private ServerProcessable PIInterface;
     private EventQueue serverProcessThreadEventQueue;
 
     private static int SERVER_PI_DEFAULT_PORT = 21;

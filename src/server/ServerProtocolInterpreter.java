@@ -1,9 +1,9 @@
 package server;
 
 import process.Event;
-import process.ProtocolInterpreterable;
+import process.ServerProcessable;
 
-public class ServerProtocolInterpreter implements ProtocolInterpreterable {
+public class ServerProtocolInterpreter implements ServerProcessable {
 
     public ServerProtocolInterpreter(){
 
