@@ -1,6 +1,6 @@
 package process;
 
-public class UserProtocolInterper implements ProtocolInterpreterable {
+public class ProtocolInterperImp implements ProtocolInterpreterable {
     @Override
     public void replyOperationResult(Event response) {
 

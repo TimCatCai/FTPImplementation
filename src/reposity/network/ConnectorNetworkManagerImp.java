@@ -12,8 +12,6 @@ import java.nio.charset.StandardCharsets;
  */
 public class ConnectorNetworkManagerImp implements NetworkManager {
     private final static int BUFFER_SIZE = 10;
-    private final static int USER_DATA_TRANSFER_DEFAULT_PORT = 20;
-
     /**
      * the timeout of connecting is 30s
      */
@@ -28,12 +26,6 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
         this.userHostName = userHostName;
         this.userDataTransferPort = userDataTransferPort;
     }
-
-    public ConnectorNetworkManagerImp() {
-        this.userHostName = "127.0.0.1";
-        this.userDataTransferPort = USER_DATA_TRANSFER_DEFAULT_PORT;
-    }
-
 
     /**
      * @param in the input stream of the file wanted to be sent

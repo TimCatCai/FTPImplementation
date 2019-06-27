@@ -11,7 +11,7 @@ public interface DataTransferProcessable {
 
 
     /**
-     * sets data frome DTP
+     * gets data from DTP
      * @param event communication info for the DTP
      */
     void receiveData(Event event);

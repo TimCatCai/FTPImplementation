@@ -17,17 +17,10 @@ public class ProviderNetworkManagerImp implements NetworkManager {
      *  If data transfer port is not set by user, this is <code>DEFAULT_USER_DATA_TRANFER_PORT</code>
      */
     private int userDataPort;
-    private final  static int DEFAULT_USER_DATA_TRANSFER_PORT = 20;
     private Socket socketConnected;
     public ProviderNetworkManagerImp(int userDataPort) {
         this.userDataPort = userDataPort;
     }
-
-    public ProviderNetworkManagerImp(){
-        userDataPort = DEFAULT_USER_DATA_TRANSFER_PORT;
-
-    }
-
     public void openDataServerSocket( ){
         /**
          * @TODO remember to start a new thread for the ServerSocket
