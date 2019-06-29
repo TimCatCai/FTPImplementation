@@ -1,15 +1,12 @@
 package server.Commands;
 
-import server.Commands.definition.AbstractCommand;
-import server.Commands.definition.CWD;
-import server.Commands.definition.PASS;
-import server.Commands.definition.USER;
+import server.Commands.definition.*;
 
 import java.util.HashMap;
 
 public class CommandsRepo {
     private HashMap<String,AbstractCommand> commandsList  = new HashMap<>();
-    private static CommandsRepo commandsRepo;
+    private static CommandsRepo sCommandsRepo;
     private CommandsRepo(){
         commandsList.put("USER",new USER(
                 "USER",
@@ -27,21 +24,55 @@ public class CommandsRepo {
 
         commandsList.put("CWD", new CWD(
                 "CWD",
-                "<SP> <pathname> <CRLF>\n"
+                "CWD <SP> <pathname> <CRLF>\n"
                          + "<pathname> ::= <string>",
                 1
         ));
 
+        commandsList.put("CDUP",
+                new CDUP("CDUP",
+                        " CDUP <CRLF> ",
+                        0));
+        commandsList.put("HELP",
+                new HELP(
+                        "HELP",
+                        " List all commands have implemented\n ",
+                0
+                ));
+
+
     }
 
-    public static AbstractCommand getCommand(String name){
-        if(commandsRepo == null){
-            commandsRepo = new CommandsRepo();
+    public static CommandsRepo getInstance(){
+        if(sCommandsRepo == null){
+            sCommandsRepo = new CommandsRepo();
         }
-        return commandsRepo.getCommandInList(name);
+        return sCommandsRepo;
+    }
+    public static AbstractCommand getCommand(String name){
+
+        return getInstance().getCommandInList(name);
     }
 
-    protected AbstractCommand getCommandInList(String name){
+    private AbstractCommand getCommandInList(String name){
         return commandsList.get(name);
+    }
+
+    private HashMap<String,AbstractCommand> getCommandsList(){
+        return this.commandsList;
+    }
+    public static String seeAllCommands(){
+
+        StringBuilder builder = new StringBuilder();
+        HashMap<String,AbstractCommand> commandsList = getInstance().getCommandsList();
+        AbstractCommand command;
+        for(String key: commandsList.keySet()){
+           command = commandsList.get(key);
+            builder.append(command.getName());
+            builder.append("\n");
+            builder.append(command.getDescription());
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 }

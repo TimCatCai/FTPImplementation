@@ -65,7 +65,11 @@ public class UserState implements UserStateable{
         boolean result = true;
         String userCommandName = CommandsRepo.getCommand("USER").getName();
         String passwordCommandName = CommandsRepo.getCommand("PASS").getName();
-        if( !isLoggedIn && ! userCommandName.equals(commandName) && ! passwordCommandName.equals(commandName)){
+        String helpCommandName = CommandsRepo.getCommand("HELP").getName();
+        if( !isLoggedIn
+                && ! userCommandName.equals(commandName)
+                && ! passwordCommandName.equals(commandName)
+                && ! helpCommandName.equals(commandName)){
             result = false;
         }
         return result;

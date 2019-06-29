@@ -1,10 +1,13 @@
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class TestingServer {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        String a = "asdf|af";
-        System.out.println(System.getProperty("user.dir"));
+       Path path = Paths.get("G:\\temp");
+       path.resolve(Paths.get("user.txt"));
+       System.out.println(path.toString());
     }
 
     public static int bytesToInt(byte[] bytes) {
