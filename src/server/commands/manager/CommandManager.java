@@ -5,10 +5,11 @@ import server.commands.*;
 import server.commands.definition.AbstractCommand;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class CommandManager implements CommandManagerable {
     private UserStateable userState;
-
+    private Logger logger = Logger.getLogger(CommandManager.class.getName());
     public CommandManager(UserStateable userState) {
         this.userState = userState;
     }
@@ -28,7 +29,7 @@ public class CommandManager implements CommandManagerable {
         //command exits
         else {
             //check the number of command is suitable or not
-            if (realCommand.getParameterNumber() != command.getParameterNumber()) {
+            if (! isCommandParameterSuitable(command,realCommand)) {
                 commandExecuteResult.setReplyForCommand(ReplyRepo.getReply(ReplyRepo.PARAMETER_ERROR));
                 conditionPermitted = false;
             }
@@ -44,10 +45,25 @@ public class CommandManager implements CommandManagerable {
 
         // the command exists and the number of parameter is right, execute it
         if (commandExist && conditionPermitted) {
-            commandExecuteResult = realCommand.execute(command.getParameters(), userState);
+            commandExecuteResult = realCommand.execute(command.getParameters(),
+                    command.getParameterNumber(), userState);
         }
 
         return commandExecuteResult;
+    }
+
+    private boolean isCommandParameterSuitable(AbstractCommand commandCheck,
+                                               AbstractCommand commandInRepo){
+        boolean result = false;
+        int commandCheckParameterNumber = commandCheck.getParameterNumber()[0];
+        for(int parameterNumber: commandInRepo.getParameterNumber()){
+            if(parameterNumber == commandCheckParameterNumber){
+                result = true;
+            }
+        }
+
+        logger.info("the result of parameter check " + result);
+        return result;
     }
 
 

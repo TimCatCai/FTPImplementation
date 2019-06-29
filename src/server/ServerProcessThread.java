@@ -60,8 +60,6 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
 
             commandExecuteResult = commandManager.parse(commandReceived);
             replyForCommandOperation = commandExecuteResult.getReplyForCommand();
-            logger.info("command accepted: " + commandReceived.getName()
-                    + "\nreplyForCommandOperation content:" + replyForCommandOperation.toString() );
             sentReply(replyForCommandOperation);
 
             Event operation = commandExecuteResult.getOperation();
@@ -120,13 +118,13 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
 
     private AbstractCommand spiltNewCommand(String data){
         String [] commandString = data.split("\\|");
-        String [] parameters = null;
-
+        String [] parameters = null ;
+        int [] parameterNumber = new int[1] ;
         if(commandString.length >= 2){
             parameters = Arrays.copyOfRange(commandString,1,commandString.length);
+            parameterNumber[0] = parameters.length;
         }else{
-            parameters = new String [1];
-            parameters[0] = commandString[0];
+            parameterNumber[0] = 0;
         }
 
         logger.info(" in spiltNewCommand commandString length: " + commandString.length);
@@ -137,17 +135,19 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         }
         System.out.println();
 
-        AbstractCommand newCommand = new USER(commandString[0].toUpperCase(),
+
+        return new USER(commandString[0].toUpperCase(),
                 "",
-                commandString.length - 1,
+                parameterNumber,
                 parameters);
-        return newCommand;
     }
 
     private void sentReply(Reply reply){
-        StringEvent replyForUserCommandEvent;
-        replyForUserCommandEvent = new StringEvent(reply.toString(), DataDirection.SENT,SERVER_PROCESS_THREAD_ID);
-        serverCommandsTransferProcess.sentData(replyForUserCommandEvent);
+        if(reply != null){
+            StringEvent replyForUserCommandEvent;
+            replyForUserCommandEvent = new StringEvent(reply.toString(), DataDirection.SENT,SERVER_PROCESS_THREAD_ID);
+            serverCommandsTransferProcess.sentData(replyForUserCommandEvent);
+        }
     }
 
 

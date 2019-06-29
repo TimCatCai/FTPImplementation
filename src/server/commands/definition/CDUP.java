@@ -8,16 +8,16 @@ import java.nio.file.Path;
 
 public class CDUP extends AbstractCommand {
 
-    protected CDUP(String name, String description, int parameterNumber, String[] parameters) {
+    public CDUP(String name, String description, int[] parameterNumber, String[] parameters) {
         super(name, description, parameterNumber, parameters);
     }
 
-    public CDUP(String name, String description, int parameterNumber) {
+    public CDUP(String name, String description, int[] parameterNumber) {
         super(name, description, parameterNumber);
     }
 
     @Override
-    public CommandExecuteResult execute(String[] parameters, UserStateable userState) {
+    public CommandExecuteResult execute(String[] parameters, int [] parameterNumber,UserStateable userState) {
         CommandExecuteResult commandExecuteResult = new CommandExecuteResult();
         Path currentDirectory = userState.getCurrentDirectory();
         Path parentPath =  currentDirectory.getParent();

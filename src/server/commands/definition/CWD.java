@@ -12,16 +12,17 @@ import java.nio.file.Paths;
 
 public class CWD  extends AbstractCommand {
 
-    protected CWD(String name, String description, int parameterNumber, String[] parameters) {
+
+    protected CWD(String name, String description, int[] parameterNumber, String[] parameters) {
         super(name, description, parameterNumber, parameters);
     }
 
-    public CWD(String name, String description, int parameterNumber) {
+    public CWD(String name, String description, int[] parameterNumber) {
         super(name, description, parameterNumber);
     }
 
     @Override
-    public CommandExecuteResult execute(String[] parameters, UserStateable userState) {
+    public CommandExecuteResult execute(String[] parameters,int[] parameterNumber, UserStateable userState) {
         PathAccess pathAccess = new PathController();
         CommandExecuteResult commandExecuteResult = new CommandExecuteResult();
         Path newPath = Paths.get(parameters[0]);

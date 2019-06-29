@@ -6,16 +6,16 @@ import server.commands.ReplyRepo;
 
 public class PASS extends AbstractCommand {
 
-    protected PASS(String name, String description, int parameterNumber, String[] parameters) {
+    protected PASS(String name, String description, int [] parameterNumber, String [] parameters) {
         super(name, description, parameterNumber, parameters);
     }
 
-    public PASS(String name, String description, int parameterNumber) {
+    public PASS(String name, String description, int [] parameterNumber) {
         super(name, description, parameterNumber);
     }
 
     @Override
-    public CommandExecuteResult execute(String[] parameters, UserStateable userState) {
+    public CommandExecuteResult execute(String[] parameters, int[] parameterNumber,UserStateable userState) {
         CommandExecuteResult commandExecuteResult = new CommandExecuteResult();
         if(userState.getUserName() == null){
             commandExecuteResult.setReplyForCommand(ReplyRepo.getReply(ReplyRepo.NO_LOGIN));

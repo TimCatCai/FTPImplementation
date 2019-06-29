@@ -12,35 +12,42 @@ public class CommandsRepo {
                 "USER",
             " USER <SP> <username> <CRLF>\n" +
                         "<username> ::= <string>",
-      1
+                        new int[]{1}
                 ));
 
         commandsList.put("PASS",new PASS(
                 "PASS",
                 "PASS <SP> <password> <CRLF>\n" +
                         "<password> ::= <string>",
-                1
+                new int[]{1}
         ));
 
         commandsList.put("CWD", new CWD(
                 "CWD",
                 "CWD <SP> <pathname> <CRLF>\n"
                          + "<pathname> ::= <string>",
-                1
+                new int[]{1}
         ));
 
         commandsList.put("CDUP",
                 new CDUP("CDUP",
                         " CDUP <CRLF> ",
-                        0));
+                        new int[]{0}));
         commandsList.put("HELP",
                 new HELP(
                         "HELP",
                         " List all commands have implemented\n ",
-                0
+                        new int[]{0}
                 ));
 
-
+        commandsList.put("LIST",
+                new LIST(
+                        "LIST",
+                        "LIST (without parameter)(current dir)\n" +
+                                "or LIST [<SP> <pathname>] <CRLF>\n"
+                        + "<pathname> ::= <string>",
+                        new int[]{0,1}
+                ));
     }
 
     public static CommandsRepo getInstance(){
