@@ -1,4 +1,4 @@
-package reposity.file;
+package reposity.path;
 
 import java.nio.file.Path;
 

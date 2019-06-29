@@ -1,41 +1,10 @@
-import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TestingServer {
     public static void main(String[] args) throws IOException, InterruptedException {
-//        Logger logger = Logger.getLogger(TestingServer.class.getClass().getName());
-//
-//        ServerSocket serverSocket = new ServerSocket(8080);
-//
-//        Socket socket = serverSocket.accept();
-//
-//        InputStream in = socket.getInputStream();
-//        DataInputStream networkDataStream = new DataInputStream(in);
-//        byte[] bytes = new byte[4];
-//        int length = 0;
-//        if (networkDataStream.read(bytes) != -1) {
-//            length = bytesToInt(bytes);
-//        }
-//
-//        logger.info("The length is " + length);
-//
-//        byte [] data = new byte[length];
-//
-//        if(networkDataStream.read(data) != -1){
-//
-//        }
-//
-//        logger.info("The content are: " + new String(data,"UTF-8"));
-//        TimeUnit.SECONDS.sleep(10);
+
         String a = "asdf|af";
-        System.out.println(a.toUpperCase());
+        System.out.println(System.getProperty("user.dir"));
     }
 
     public static int bytesToInt(byte[] bytes) {

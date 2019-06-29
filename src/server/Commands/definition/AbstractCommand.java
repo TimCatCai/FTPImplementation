@@ -1,7 +1,9 @@
-package server.Commands;
+package server.Commands.definition;
 
 import client.UserState;
 import client.UserStateable;
+import server.Commands.CommandExecuteResult;
+import server.Commands.CommandState;
 
 /**
  *
@@ -23,6 +25,9 @@ public abstract class AbstractCommand {
         this.parameters = parameters;
     }
 
+    protected AbstractCommand(String name, String description, int parameterNumber) {
+        this(name,description,parameterNumber,null);
+    }
     public abstract CommandExecuteResult execute(String [] parameters, UserStateable userState);
 
 

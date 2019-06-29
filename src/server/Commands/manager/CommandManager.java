@@ -1,7 +1,8 @@
-package server.Commands;
+package server.Commands.manager;
 
-import client.UserState;
 import client.UserStateable;
+import server.Commands.*;
+import server.Commands.definition.AbstractCommand;
 
 import java.util.HashMap;
 
@@ -18,7 +19,7 @@ public class CommandManager implements CommandManagerable {
         AbstractCommand realCommand = cachedCommands.get(command.getName());
         CommandExecuteResult commandExecuteResult = new CommandExecuteResult();
         boolean commandExist = true;
-        boolean parameterNameNumberRight = true;
+        boolean conditionPermitted = true;
         //new command, that is it isn't in the command cache
         if(realCommand == null){
            realCommand =   CommandsRepo.getCommand(command.getName());
@@ -26,21 +27,33 @@ public class CommandManager implements CommandManagerable {
             if(realCommand == null){
                 commandExecuteResult.setReplyForCommand(ReplyRepo.getReply(ReplyRepo.NO_SUCH_COMMAND));
                 commandExist = false;
+            } //the command exists and add it to cache and parameter right;
+
+            //command exits
+            else{
+                //check the number of command is suitable or not
+                if(realCommand.getParameterNumber() !=  command.getParameterNumber()) {
+                    commandExecuteResult.setReplyForCommand(ReplyRepo.getReply(ReplyRepo.PARAMETER_ERROR));
+                    conditionPermitted = false;
+                }
+
+                //check the user logs in or not.
+                else if( !userState.isLoggedInForOtherCommands(command)){
+                    commandExecuteResult.setReplyForCommand(ReplyRepo.getReply(ReplyRepo.NO_LOGIN));
+                    conditionPermitted = false;
+                }
+                // exits and suits previous condition
+                else{
+                    cachedCommands.put(realCommand.getName(),realCommand);
+                }
             }
 
-            else if(realCommand.getParameterNumber() !=  command.getParameterNumber()) {
-                commandExecuteResult.setReplyForCommand(ReplyRepo.getReply(ReplyRepo.PARAMETER_ERROR));
-                parameterNameNumberRight = false;
-            }
-            //the command exists and add it to cache and parameter right;
-            else{
-                cachedCommands.put(realCommand.getName(),realCommand);
-            }
+
         }
 
 
         // the command exists and the number of parameter is right, execute it
-        if(commandExist && parameterNameNumberRight){
+        if(commandExist && conditionPermitted){
             commandExecuteResult = realCommand.execute(command.getParameters(),userState);
             CommandState nextCommandState = commandExecuteResult.getNextCommandState();
             if(nextCommandState != null){

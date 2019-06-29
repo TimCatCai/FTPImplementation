@@ -1,7 +1,11 @@
 package server.Commands;
 
+import server.Commands.definition.AbstractCommand;
+import server.Commands.definition.CWD;
+import server.Commands.definition.PASS;
+import server.Commands.definition.USER;
+
 import java.util.HashMap;
-import java.util.Map;
 
 public class CommandsRepo {
     private HashMap<String,AbstractCommand> commandsList  = new HashMap<>();
@@ -11,16 +15,21 @@ public class CommandsRepo {
                 "USER",
             " USER <SP> <username> <CRLF>\n" +
                         "<username> ::= <string>",
-      1,
-                null
+      1
                 ));
 
         commandsList.put("PASS",new PASS(
                 "PASS",
                 "PASS <SP> <password> <CRLF>\n" +
                         "<password> ::= <string>",
-                1,
-                null
+                1
+        ));
+
+        commandsList.put("CWD", new CWD(
+                "CWD",
+                "<SP> <pathname> <CRLF>\n"
+                         + "<pathname> ::= <string>",
+                1
         ));
 
     }

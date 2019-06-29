@@ -14,6 +14,9 @@ public class ReplyRepo {
     public final static int NO_LOGIN = 530;
     public final static int LOGGED_IN_PROCEED = 230;
     public final static int NEED_PASSWORD = 331;
+
+    //path
+    public final static int NO_SUCH_DIRECTORY = 431;
     private ReplyRepo(){
         replysList.put(502 ,new Reply(
                 502 ,
@@ -35,6 +38,8 @@ public class ReplyRepo {
         replysList.put( 331,
                 new Reply (331, "User name okay, need password."));
 
+        replysList.put( 431,
+                new Reply(431,"No such directory"));
     }
 
     public static Reply getReply(int stateCode){

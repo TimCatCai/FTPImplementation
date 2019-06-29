@@ -6,6 +6,10 @@ import process.*;
 import reposity.network.ConnectorNetworkManagerImp;
 import reposity.network.ProviderNetworkManagerImp;
 import server.Commands.*;
+import server.Commands.definition.AbstractCommand;
+import server.Commands.definition.USER;
+import server.Commands.manager.CommandManager;
+import server.Commands.manager.CommandManagerable;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -22,7 +26,7 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
 
 
 
-    private  AbstractCommand commandReceived;
+    private AbstractCommand commandReceived;
     private static int USER_DTP_DEFAULT_PORT = 20;
 
     private final String SERVER_COMMANDS_TRANSFER_PROCESS_ID = "commands_transfer_process_id";

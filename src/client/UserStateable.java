@@ -1,11 +1,23 @@
 package client;
 
 import reposity.file.AccessPrivilege;
+import server.Commands.definition.AbstractCommand;
+
+import java.nio.file.Path;
 
 public interface UserStateable {
 
-   String  getUserName();
-   void setUserName(String userName);
-   void  setUserPrivilege(AccessPrivilege accessPrivilege);
+    boolean isLoggedIn();
+    void setLoggedIn(boolean loggedIn);
+    void clearAllState();
+    boolean isLoggedInForOtherCommands(AbstractCommand command);
+
+    String getUserName();
+
+    void setUserName(String userName);
+
+    void setUserPrivilege(AccessPrivilege accessPrivilege);
+
+    void setCurrentDirectory(Path currentDiretory);
 
 }
