@@ -3,6 +3,8 @@ package reposity.network;
 import utils.network.DataTransferWithConnectedSocket;
 
 import java.io.*;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.logging.Logger;
 
@@ -29,6 +31,11 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
     public ConnectorNetworkManagerImp(String userHostName, int userDataTransferPort) {
         this.userHostName = userHostName;
         this.userDataTransferPort = userDataTransferPort;
+    }
+
+    public ConnectorNetworkManagerImp(InetAddress inetAddress,int userDataTransferPort ){
+        this.userHostName = new String(inetAddress.getAddress());
+
     }
 
     /**

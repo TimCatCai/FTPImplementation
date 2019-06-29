@@ -1,6 +1,9 @@
 package server;
 
+import client.UserState;
+import client.UserStateable;
 import process.*;
+import reposity.network.ConnectorNetworkManagerImp;
 import reposity.network.ProviderNetworkManagerImp;
 import server.Commands.*;
 
@@ -11,35 +14,62 @@ import java.util.logging.Logger;
 
 public class ServerProcessThread implements Runnable , ManagerProcessable {
     private Socket socketToUser;
-    private DataTransferProcessable commandsTransferProcess;
+    private DataTransferProcessable serverCommandsTransferProcess;
+    private DataTransferProcessable serverDataTransferProcess;
     private CommandManagerable commandManager;
-    private EventQueue serverProcessThreadEventQueue;
-    private  AbstractCommand commandReceived;
-    private static int SERVER_PI_DEFAULT_PORT = 58888;
 
-    private final String COMMANDS_TRANSFER_PROCESS_ID = "commands_transfer_process_id";
+    private EventQueue serverProcessThreadEventQueue;
+
+
+
+    private  AbstractCommand commandReceived;
+    private static int USER_DTP_DEFAULT_PORT = 20;
+
+    private final String SERVER_COMMANDS_TRANSFER_PROCESS_ID = "commands_transfer_process_id";
+    private final String SERVER_DATA_TRANSFER_PROCESS_ID = "server_data_transfer_process_id";
     private final String SERVER_PROCESS_THREAD_ID = "server_process_thread_id";
     private Logger logger= Logger.getLogger(ServerProcessThread.class.getName());
 
     public ServerProcessThread(Socket socketToUser) {
         this.socketToUser = socketToUser;
         ProviderNetworkManagerImp serverPINetworkManager = new ProviderNetworkManagerImp(socketToUser);
-        commandsTransferProcess = new DataTransferProcess(serverPINetworkManager,this, COMMANDS_TRANSFER_PROCESS_ID);
-        commandManager = new CommandManager();
+        serverCommandsTransferProcess = new DataTransferProcess(serverPINetworkManager,this, SERVER_COMMANDS_TRANSFER_PROCESS_ID);
+        ConnectorNetworkManagerImp serverDTPNetworkManager = new ConnectorNetworkManagerImp(
+                socketToUser.getInetAddress(),
+                USER_DTP_DEFAULT_PORT
+                );
+        serverDataTransferProcess = new DataTransferProcess(serverDTPNetworkManager,this,
+                SERVER_DATA_TRANSFER_PROCESS_ID);
+        String hostName = new String(socketToUser.getInetAddress().getAddress());
+        UserStateable userState = new UserState(hostName,USER_DTP_DEFAULT_PORT,null);
+        commandManager = new CommandManager(userState);
+
         serverProcessThreadEventQueue = new EventQueue();
     }
 
     @Override
     public void run() {
         Reply replyForCommandOperation;
+        CommandExecuteResult commandExecuteResult;
         while (!socketToUser.isClosed()) {
             commandReceived = acceptCommandFromCommandTransferProcess();
 
-            replyForCommandOperation = commandManager.parse(commandReceived);
+            commandExecuteResult = commandManager.parse(commandReceived);
+            replyForCommandOperation = commandExecuteResult.getReplyForCommand();
             logger.info("command accepted: " + commandReceived.getName()
                     + "\nreplyForCommandOperation content:" + replyForCommandOperation.toString() );
-
             sentReply(replyForCommandOperation);
+
+            Event operation = commandExecuteResult.getOperation();
+           if(operation != null){
+               if(operation.getDirection() == DataDirection.RECEIVE){
+                   serverDataTransferProcess.receiveData(operation);
+               }else if(operation.getDirection() == DataDirection.SENT){
+                   serverDataTransferProcess.sentData(operation);
+               }
+           }
+
+
         }
         try {
             socketToUser.close();
@@ -60,10 +90,10 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         StringEvent desiredCommandEvent = new StringEvent("", DataDirection.RECEIVE,SERVER_PROCESS_THREAD_ID);
         Event newEventFromEventQueue;
         Reply replyToUserForFileTransferState ;
-        this.commandsTransferProcess.receiveData(desiredCommandEvent);
+        this.serverCommandsTransferProcess.receiveData(desiredCommandEvent);
         newEventFromEventQueue = serverProcessThreadEventQueue.takeEvent();
 
-        while (! newEventFromEventQueue.getOriginal().equals(COMMANDS_TRANSFER_PROCESS_ID)){
+        while (! newEventFromEventQueue.getOriginal().equals(SERVER_COMMANDS_TRANSFER_PROCESS_ID)){
 
             if(newEventFromEventQueue instanceof StringEvent){
 
@@ -115,6 +145,10 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
     private void sentReply(Reply reply){
         StringEvent replyForUserCommandEvent;
         replyForUserCommandEvent = new StringEvent(reply.toString(), DataDirection.SENT,SERVER_PROCESS_THREAD_ID);
-        commandsTransferProcess.sentData(replyForUserCommandEvent);
+        serverCommandsTransferProcess.sentData(replyForUserCommandEvent);
+    }
+
+    private void executeCommandOperation(Event commandOperation){
+
     }
 }

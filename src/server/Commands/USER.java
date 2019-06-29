@@ -1,5 +1,9 @@
 package server.Commands;
 
+import client.UserState;
+import client.UserStateable;
+import reposity.file.AccessPrivilege;
+
 import java.util.logging.Logger;
 
 public class USER extends AbstractCommand {
@@ -12,15 +16,15 @@ public class USER extends AbstractCommand {
     public USER(String name, String description, int parameterNumber, String [] parameters) {
         super(name, description,parameterNumber,parameters);
 
-        State temp;
-        firstState = new State(FIRST_STATE,FIRST_STATE_VALUE);
-        temp  = new State(ALREADY_REGISTER_STATE,ALREADY_REGISTER_STATE_VALUE);
-        firstState.setNextState(temp);
-        currentSate = firstState;
+        CommandState temp;
+        firstCommandState = new CommandState(FIRST_STATE,FIRST_STATE_VALUE);
+        temp  = new CommandState(ALREADY_REGISTER_STATE,ALREADY_REGISTER_STATE_VALUE);
+        firstCommandState.setNextCommandState(temp);
+        currentSate = firstCommandState;
     }
 
     @Override
-    public CommandExecuteResult execute(String [] parameters) {
+    public CommandExecuteResult execute(String [] parameters, UserStateable userState) {
         CommandExecuteResult commandExecuteResult = new CommandExecuteResult();
         this.parameters = parameters;
         int stateCode;
@@ -29,12 +33,13 @@ public class USER extends AbstractCommand {
         }else {
             String userName = parameters[0];
             if(isFirstVisit(userName)){
-                currentSate = firstState;
+                currentSate = firstCommandState;
             }else {
-                currentSate = firstState.getNextState();
-                commandExecuteResult.setNextState(currentSate);
+                currentSate = firstCommandState.getNextCommandState();
+                commandExecuteResult.setNextCommandState(currentSate);
             }
             stateCode = ReplyRepo.LOGGED_IN_PROCEED;
+            userState.setUserPrivilege(AccessPrivilege.ORDINARY);
         }
 
         logger.info("StateCode: " + stateCode );

@@ -6,7 +6,7 @@ public class CommandExecuteResult {
     /**
      * next state of the command if the state of the command need to be modified, or null
      */
-    private State nextState;
+    private CommandState nextCommandState;
 
     private Event Operation;
 
@@ -16,8 +16,8 @@ public class CommandExecuteResult {
 
     }
 
-    public State getNextState() {
-        return nextState;
+    public CommandState getNextCommandState() {
+        return nextCommandState;
     }
 
     public Event getOperation() {
@@ -28,8 +28,8 @@ public class CommandExecuteResult {
         return replyForCommand;
     }
 
-    public void setNextState(State nextState) {
-        this.nextState = nextState;
+    public void setNextCommandState(CommandState nextCommandState) {
+        this.nextCommandState = nextCommandState;
     }
 
     public void setOperation(Event operation) {

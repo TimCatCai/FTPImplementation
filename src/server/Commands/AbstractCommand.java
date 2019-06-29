@@ -1,5 +1,8 @@
 package server.Commands;
 
+import client.UserState;
+import client.UserStateable;
+
 /**
  *
  */
@@ -8,8 +11,8 @@ public abstract class AbstractCommand {
     protected String description;
     protected int parameterNumber;
     protected String [] parameters;
-    protected State currentSate;
-    protected State firstState;
+    protected CommandState currentSate;
+    protected CommandState firstCommandState;
     protected int successCode;
     protected int failureCode;
 
@@ -20,7 +23,7 @@ public abstract class AbstractCommand {
         this.parameters = parameters;
     }
 
-    public abstract CommandExecuteResult execute(String [] parameters);
+    public abstract CommandExecuteResult execute(String [] parameters, UserStateable userState);
 
 
     public void setDescription(String description) {
@@ -40,17 +43,16 @@ public abstract class AbstractCommand {
         return description;
     }
 
-
     public int getParameterNumber() {
         return parameterNumber;
     }
 
-    public State getCurrentSate() {
+    public CommandState getCurrentSate() {
         return currentSate;
     }
 
-    public State getFirstState() {
-        return firstState;
+    public CommandState getFirstCommandState() {
+        return firstCommandState;
     }
 
     public int getSuccessCode() {
@@ -59,5 +61,9 @@ public abstract class AbstractCommand {
 
     public int getFailureCode() {
         return failureCode;
+    }
+
+    public void setCurrentSate(CommandState currentSate) {
+        this.currentSate = currentSate;
     }
 }
