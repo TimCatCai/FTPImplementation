@@ -2,20 +2,15 @@ package client;
 
 
 import process.*;
+import reposity.network.ConnectorNetworkManagerImp;
 import reposity.network.ProviderNetworkManagerImp;
 
 import java.util.concurrent.TimeUnit;
 
 public class Client {
     public static void main(String[] args) throws InterruptedException {
-        ManagerProcessable pro = new ProtocolInterperImp();
-        ProviderNetworkManagerImp userDTP = new ProviderNetworkManagerImp();
-        userDTP.openDataServerSocket();
-        DataTransferProcess dataTransferProcess = new DataTransferProcess(userDTP
-        ,pro);
-
-        dataTransferProcess.receiveData(new FileEvent("G:\\temp\\user.txt",DataDirection.RECEIVE));
-        TimeUnit.SECONDS.sleep(500);
+            Controller controller = new Controller(new Display());
+            controller.start();
     }
 
 

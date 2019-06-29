@@ -20,7 +20,7 @@ public abstract class AbstractCommand {
         this.parameters = parameters;
     }
 
-    public abstract Reply execute(String [] parameters);
+    public abstract CommandExecuteResult execute(String [] parameters);
 
 
     public void setDescription(String description) {

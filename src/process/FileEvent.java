@@ -10,9 +10,9 @@ import java.nio.file.Paths;
  */
 public class FileEvent extends Event {
 
-    public FileEvent(String data,DataDirection direction) {
-        super(data,direction);
 
+    public FileEvent(String data, DataDirection direction, String original) {
+        super(data, direction, original);
     }
 
     public Path  getPath(){

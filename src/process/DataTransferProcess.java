@@ -17,17 +17,19 @@ public class DataTransferProcess implements DataTransferProcessable{
     private FilesController filesController;
     private NetworkManager networkManager;
     private ThreadPoolExecutor DTPThread;
-    private ManagerProcessable protocolInterpreter;
-    public DataTransferProcess(NetworkManager networkManager, ManagerProcessable protocolInterpreter){
+    private ManagerProcessable managerProcessable;
+    private String processName;
+
+    public DataTransferProcess(NetworkManager networkManager, ManagerProcessable managerProcessable,String processName){
         this.eventQueue = new EventQueue();
         filesController = new FilesController();
         this.networkManager  = networkManager;
-        this.protocolInterpreter = protocolInterpreter;
+        this.managerProcessable = managerProcessable;
         DTPThread = new ThreadPoolExecutor(7, 8, 5,
                 TimeUnit.SECONDS,
                 new LinkedBlockingDeque<>());
         DTPThread.execute(new DataTransferProcessThread(
-                filesController,  this.networkManager, protocolInterpreter, eventQueue)
+                filesController,  this.networkManager, managerProcessable, eventQueue,processName)
         );
     }
 

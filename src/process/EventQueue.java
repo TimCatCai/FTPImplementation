@@ -21,9 +21,9 @@ public class EventQueue {
         synchronized(dataEventsList){
             if(dataEventsList.isEmpty()){
                 try {
-                    System.out.println("queue is empty");
+//                    System.out.println("queue is empty");
                     dataEventsList.wait();
-                    System.out.println("get event");
+//                    System.out.println("get event");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -47,7 +47,7 @@ public class EventQueue {
                 }
             }
             this.dataEventsList.add(event);
-            System.out.println("Add");
+//            System.out.println(event.getData() + " " + event.getDirection() +"Add");
             this.dataEventsList.notify();
         }
 

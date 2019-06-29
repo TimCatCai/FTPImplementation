@@ -1,8 +1,10 @@
 package reposity.network;
 
+import utils.network.DataTransferWithConnectedSocket;
+
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 
 /**
  * the server data transfer process = server_DPI
@@ -11,6 +13,8 @@ import java.nio.charset.StandardCharsets;
  * @version 2019/06/27
  */
 public class ConnectorNetworkManagerImp implements NetworkManager {
+
+    private Logger logger = Logger.getLogger(ConnectorNetworkManagerImp.class.getName());
     private final static int BUFFER_SIZE = 10;
     /**
      * the timeout of connecting is 30s
@@ -20,7 +24,7 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
 
     private int userDataTransferPort;
     private String userHostName;
-    private Socket serverDataTransferSocket;
+    private Socket providerDataTransferSocket;
 
     public ConnectorNetworkManagerImp(String userHostName, int userDataTransferPort) {
         this.userHostName = userHostName;
@@ -39,9 +43,9 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
         if (!isConnectionValid()) {
             connectable = connectToUserDataTransferProcess();
         }
-        if(connectable){
+        if (connectable) {
             try {
-                OutputStream socketOutputStream = serverDataTransferSocket.getOutputStream();
+                OutputStream socketOutputStream = providerDataTransferSocket.getOutputStream();
                 DataOutputStream networkOutputStream = new DataOutputStream(
                         new BufferedOutputStream(socketOutputStream)
                 );
@@ -67,6 +71,7 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
 
     @Override
     public boolean receiveFile(OutputStream out) {
+
         return false;
     }
 
@@ -75,36 +80,22 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
         boolean result = false;
         boolean sendable = true;
         if (!isConnectionValid()) {
-           if(!connectToUserDataTransferProcess()){
-               sendable = false;
-           }
+            sendable = connectToUserDataTransferProcess();
         }
-
-        if(sendable){
-            try {
-                OutputStream socketOutputStream = serverDataTransferSocket.getOutputStream();
-                PrintWriter stringOut = new PrintWriter(
-                        new OutputStreamWriter(
-                                socketOutputStream,
-                                StandardCharsets.UTF_8
-                        ),
-                        true
-                );
-
-                stringOut.print(data);
-                result = true;
-                socketOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (sendable) {
+            DataTransferWithConnectedSocket.sentString(providerDataTransferSocket,data,logger);
         }
-
         return result;
     }
 
     @Override
     public String acceptString() {
-        return null;
+        String result = null;
+
+        if (isConnectionValid()) {
+           result =  DataTransferWithConnectedSocket.acceptString(providerDataTransferSocket,logger);
+        }
+        return result;
     }
 
 
@@ -112,13 +103,13 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
         boolean result = false;
         if (!isConnectionValid()) {
             try {
-                serverDataTransferSocket = new Socket(userHostName, userDataTransferPort);
-                serverDataTransferSocket.setSoTimeout(TIMEOUT_OF_CONNECTING);
+                providerDataTransferSocket = new Socket(userHostName, userDataTransferPort);
+                providerDataTransferSocket.setSoTimeout(TIMEOUT_OF_CONNECTING);
                 result = true;
             } catch (IOException e) {
                 e.printStackTrace();
                 try {
-                    serverDataTransferSocket.close();
+                    providerDataTransferSocket.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -128,7 +119,7 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
         return result;
     }
 
-    private boolean isConnectionValid() {
-        return serverDataTransferSocket != null && ! serverDataTransferSocket.isClosed();
+     private boolean isConnectionValid() {
+        return providerDataTransferSocket != null && !providerDataTransferSocket.isClosed();
     }
 }

@@ -12,5 +12,5 @@ public interface ManagerProcessable {
      */
      void replyOperationResult(Event response);
 
-     void newCommandReady(Event newCommand);
+
 }
