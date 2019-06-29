@@ -6,6 +6,7 @@ public class UserState implements UserStateable{
     private String hostName;
     private int dataPort;
     private AccessPrivilege userPrivilege;
+    private String userName;
 
     public UserState(String hostName, int dataPort, AccessPrivilege userPrivilege) {
         this.hostName = hostName;
@@ -31,6 +32,17 @@ public class UserState implements UserStateable{
 
     public void setDataPort(int dataPort) {
         this.dataPort = dataPort;
+    }
+
+
+    @Override
+    public String  getUserName() {
+        return userName;
+    }
+
+    @Override
+    public void setUserName(String userName) {
+       this.userName = userName;
     }
 
     @Override

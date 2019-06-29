@@ -38,8 +38,9 @@ public class USER extends AbstractCommand {
                 currentSate = firstCommandState.getNextCommandState();
                 commandExecuteResult.setNextCommandState(currentSate);
             }
-            stateCode = ReplyRepo.LOGGED_IN_PROCEED;
+            stateCode = ReplyRepo.NEED_PASSWORD;
             userState.setUserPrivilege(AccessPrivilege.ORDINARY);
+            userState.setUserName(userName);
         }
 
         logger.info("StateCode: " + stateCode );

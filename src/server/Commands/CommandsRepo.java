@@ -15,7 +15,13 @@ public class CommandsRepo {
                 null
                 ));
 
-
+        commandsList.put("PASS",new PASS(
+                "PASS",
+                "PASS <SP> <password> <CRLF>\n" +
+                        "<password> ::= <string>",
+                1,
+                null
+        ));
 
     }
 

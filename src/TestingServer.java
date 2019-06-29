@@ -34,13 +34,8 @@ public class TestingServer {
 //
 //        logger.info("The content are: " + new String(data,"UTF-8"));
 //        TimeUnit.SECONDS.sleep(10);
-
-
-        int a = 256;
-        byte [] b  = intToBytes(a);
-        for(int i = 3; i >= 0 ; i --){
-            System.out.println(b[i]);
-        }
+        String a = "asdf|af";
+        System.out.println(a.toUpperCase());
     }
 
     public static int bytesToInt(byte[] bytes) {

@@ -110,8 +110,7 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         }
 
         desiredCommandEvent = (StringEvent) newEventFromEventQueue;
-       logger.info("in acceptCommandFromCommandTransferProcess " + "desiredCommandEvent content:"
-                + desiredCommandEvent.getData());
+       logger.info("desiredCommandEvent content:" + desiredCommandEvent.getData());
         return spiltNewCommand(desiredCommandEvent.getData());
     }
 
@@ -127,7 +126,6 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         }
 
         logger.info(" in spiltNewCommand commandString length: " + commandString.length);
-        System.out.print("its content is: ");
 
         for(String command :commandString){
             System.out.print(command + " " );
@@ -135,7 +133,7 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         }
         System.out.println();
 
-        AbstractCommand newCommand = new USER(commandString[0],
+        AbstractCommand newCommand = new USER(commandString[0].toUpperCase(),
                 "",
                 commandString.length - 1,
                 parameters);
@@ -148,7 +146,5 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         serverCommandsTransferProcess.sentData(replyForUserCommandEvent);
     }
 
-    private void executeCommandOperation(Event commandOperation){
 
-    }
 }
