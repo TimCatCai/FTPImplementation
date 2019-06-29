@@ -1,13 +1,8 @@
-package server.Commands;
+package server.commands;
 
 import process.Event;
 
 public class CommandExecuteResult {
-    /**
-     * next state of the command if the state of the command need to be modified, or null
-     */
-    private CommandState nextCommandState;
-
     private Event Operation;
 
     private Reply replyForCommand;
@@ -15,21 +10,12 @@ public class CommandExecuteResult {
     public CommandExecuteResult(){
 
     }
-
-    public CommandState getNextCommandState() {
-        return nextCommandState;
-    }
-
     public Event getOperation() {
         return Operation;
     }
 
     public Reply getReplyForCommand() {
         return replyForCommand;
-    }
-
-    public void setNextCommandState(CommandState nextCommandState) {
-        this.nextCommandState = nextCommandState;
     }
 
     public void setOperation(Event operation) {

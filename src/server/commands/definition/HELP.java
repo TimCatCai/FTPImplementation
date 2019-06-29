@@ -1,9 +1,9 @@
-package server.Commands.definition;
+package server.commands.definition;
 
 import client.UserStateable;
-import server.Commands.CommandExecuteResult;
-import server.Commands.CommandsRepo;
-import server.Commands.Reply;
+import server.commands.CommandExecuteResult;
+import server.commands.CommandsRepo;
+import server.commands.Reply;
 
 public class HELP extends AbstractCommand {
     protected HELP(String name, String description, int parameterNumber, String[] parameters) {

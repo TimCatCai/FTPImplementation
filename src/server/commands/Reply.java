@@ -1,4 +1,4 @@
-package server.Commands;
+package server.commands;
 
 public class Reply {
     private int stateCode;

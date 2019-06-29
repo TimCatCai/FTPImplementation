@@ -5,11 +5,11 @@ import client.UserStateable;
 import process.*;
 import reposity.network.ConnectorNetworkManagerImp;
 import reposity.network.ProviderNetworkManagerImp;
-import server.Commands.*;
-import server.Commands.definition.AbstractCommand;
-import server.Commands.definition.USER;
-import server.Commands.manager.CommandManager;
-import server.Commands.manager.CommandManagerable;
+import server.commands.*;
+import server.commands.definition.AbstractCommand;
+import server.commands.definition.USER;
+import server.commands.manager.CommandManager;
+import server.commands.manager.CommandManagerable;
 
 import java.io.IOException;
 import java.net.Socket;

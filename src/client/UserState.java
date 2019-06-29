@@ -1,8 +1,8 @@
 package client;
 
 import reposity.file.AccessPrivilege;
-import server.Commands.CommandsRepo;
-import server.Commands.definition.AbstractCommand;
+import server.commands.CommandsRepo;
+import server.commands.definition.AbstractCommand;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -95,6 +95,7 @@ public class UserState implements UserStateable{
         this.currentDirectory = path;
     }
 
+    @Override
     public Path getCurrentDirectory() {
         return currentDirectory;
     }

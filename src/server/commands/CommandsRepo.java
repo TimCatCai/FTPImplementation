@@ -1,6 +1,6 @@
-package server.Commands;
+package server.commands;
 
-import server.Commands.definition.*;
+import server.commands.definition.*;
 
 import java.util.HashMap;
 
@@ -61,6 +61,7 @@ public class CommandsRepo {
     private HashMap<String,AbstractCommand> getCommandsList(){
         return this.commandsList;
     }
+
     public static String seeAllCommands(){
 
         StringBuilder builder = new StringBuilder();

@@ -5,9 +5,8 @@ import java.nio.file.Paths;
 public class TestingServer {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-       Path path = Paths.get("G:\\temp");
-       path.resolve(Paths.get("user.txt"));
-       System.out.println(path.toString());
+       Path path = Paths.get("G:\\");
+       System.out.println(path.getParent());
     }
 
     public static int bytesToInt(byte[] bytes) {

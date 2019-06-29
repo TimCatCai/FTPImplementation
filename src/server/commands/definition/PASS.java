@@ -1,8 +1,8 @@
-package server.Commands.definition;
+package server.commands.definition;
 
 import client.UserStateable;
-import server.Commands.CommandExecuteResult;
-import server.Commands.ReplyRepo;
+import server.commands.CommandExecuteResult;
+import server.commands.ReplyRepo;
 
 public class PASS extends AbstractCommand {
 

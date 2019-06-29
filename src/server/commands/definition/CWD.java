@@ -1,11 +1,11 @@
-package server.Commands.definition;
+package server.commands.definition;
 
 import client.UserStateable;
 import reposity.path.PathAccess;
 import reposity.path.PathController;
-import server.Commands.CommandExecuteResult;
-import server.Commands.Reply;
-import server.Commands.ReplyRepo;
+import server.commands.CommandExecuteResult;
+import server.commands.Reply;
+import server.commands.ReplyRepo;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

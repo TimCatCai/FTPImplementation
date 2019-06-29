@@ -1,7 +1,7 @@
 package client;
 
 import reposity.file.AccessPrivilege;
-import server.Commands.definition.AbstractCommand;
+import server.commands.definition.AbstractCommand;
 
 import java.nio.file.Path;
 
@@ -19,5 +19,6 @@ public interface UserStateable {
     void setUserPrivilege(AccessPrivilege accessPrivilege);
 
     void setCurrentDirectory(Path currentDiretory);
+    Path getCurrentDirectory();
 
 }
