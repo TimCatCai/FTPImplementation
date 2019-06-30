@@ -20,6 +20,7 @@ public class ReplyRepo {
 
     //file
     public final static int FILE_READY = 250;
+    public final static int FILE_OPERATION_FAIL = 550;
     private ReplyRepo(){
         replysList.put(502 ,new Reply(
                 502 ,

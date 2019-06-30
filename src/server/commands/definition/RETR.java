@@ -3,6 +3,8 @@ package server.commands.definition;
 import client.UserStateable;
 import process.DataDirection;
 import process.event.FileEvent;
+import reposity.path.PathAccess;
+import reposity.path.PathController;
 import server.commands.CommandExecuteResult;
 import server.commands.Reply;
 import server.commands.ReplyRepo;
@@ -12,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class RETR extends AbstractCommand {
+    public static int RETR_FILE_SUCCESS = 250;
     protected RETR(String name, String description, int[] parameterNumber, String[] parameters) {
         super(name, description, parameterNumber, parameters);
     }
@@ -22,19 +25,21 @@ public class RETR extends AbstractCommand {
 
     @Override
     public CommandExecuteResult execute(String[] parameters, int[] parameterNumber, UserStateable userState) {
-        Path filePath = Paths.get(parameters[0]);
+        Path filePath = userState.getCurrentDirectory().resolve(Paths.get(parameters[0]));
+
         FileEvent fileOperationEvent = null;
-        Reply reply;
+        Reply replyForFileOperation;
         CommandExecuteResult commandExecuteResult = new CommandExecuteResult();
-        if(Files.exists(filePath)){
+        if(filePath != null && Files.exists(filePath)){
             fileOperationEvent = new FileEvent(filePath.toString() ,DataDirection.SENT,"RETR command");
-            reply = ReplyRepo.getReply(ReplyRepo.FILE_READY);
+            replyForFileOperation = ReplyRepo.getReply(ReplyRepo.FILE_READY);
         }else{
-
+            replyForFileOperation = ReplyRepo.getReply(ReplyRepo.FILE_OPERATION_FAIL);
         }
+
         commandExecuteResult.setOperation(fileOperationEvent);
+        commandExecuteResult.setReplyForCommand(replyForFileOperation);
 
-
-        return null;
+        return commandExecuteResult;
     }
 }

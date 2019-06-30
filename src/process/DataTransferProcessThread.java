@@ -39,30 +39,31 @@ public class DataTransferProcessThread implements Runnable {
     public void run() {
         while (true) {
             Event event = dataEventsList.takeEvent();
-            ReplyEvent toManagerReplyEvent = null;
+            FileEvent toManagerReplyEvent = null;
             Event acceptDataToManager = null;
             if (event instanceof FileEvent) {
                 if (event.getDirection() == DataDirection.SENT) {
                     InputStream in = fileAccess.readFile(((FileEvent) event).getPath());
                     //reject to read file
                     if (in == null) {
-                        toManagerReplyEvent = new ReplyEvent("reject to read file", event.getDirection(), threadName);
+                        toManagerReplyEvent = new FileEvent("reject to read file", event.getDirection(), threadName);
                     } else {
                         DTPNetworkManager.sentFile(in);
-                        toManagerReplyEvent = new ReplyEvent(event.getData(), event.getDirection(), threadName);
+                        toManagerReplyEvent = new  FileEvent(event.getData(), event.getDirection(), threadName);
                     }
 
                 } else if (event.getDirection() == DataDirection.RECEIVE) {
+                    logger.info("receiving file name: " + event.getData());
                     OutputStream out = fileAccess.writeFile(((FileEvent) event).getPath());
                     //reject to write file
                     if (out == null) {
-                        toManagerReplyEvent = new ReplyEvent("reject to write file", event.getDirection(), threadName);
+                        toManagerReplyEvent = new  FileEvent("reject to write file", event.getDirection(), threadName);
 
                     } else {
                         //the assumption sending  is always finished  successfully
                         DTPNetworkManager.receiveFile(out);
-                        toManagerReplyEvent = new ReplyEvent(event.getData(), event.getDirection(), threadName);
-                    }
+                        toManagerReplyEvent = new  FileEvent(event.getData(), event.getDirection(), threadName);
+                }
 
                 }
 

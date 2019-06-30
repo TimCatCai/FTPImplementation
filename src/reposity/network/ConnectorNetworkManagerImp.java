@@ -69,6 +69,7 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
                 result = true;
 
                 System.out.println("===========Sent!=============");
+//                providerDataTransferSocket.close()???;
             } catch (IOException e) {
                 e.printStackTrace();
             }

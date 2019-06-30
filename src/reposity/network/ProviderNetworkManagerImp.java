@@ -72,6 +72,7 @@ public class ProviderNetworkManagerImp implements NetworkManager {
         //server operation
         if (isConnected() && isEstablshedOnce) {
             try {
+                logger.info("begin to accept file:------------u");
                 InputStream inputStreamOfSocket = socketConnected.getInputStream();
                 DataInputStream networkData = new DataInputStream(
                         new BufferedInputStream(inputStreamOfSocket)
@@ -104,6 +105,34 @@ public class ProviderNetworkManagerImp implements NetworkManager {
             if(!isConnected()){
                 openDataServerSocket();
             }
+
+            if(isConnected()){
+                try {
+                    InputStream inputStreamOfSocket = socketConnected.getInputStream();
+                    DataInputStream networkData = new DataInputStream(
+                            new BufferedInputStream(inputStreamOfSocket)
+                    );
+
+                    DataOutputStream fileOutStream = new DataOutputStream(
+                            new BufferedOutputStream(out)
+                    );
+                    /**
+                     * @TODO check the size of file
+                     */
+                    byte[] buffer = new byte[BUFFER_SIZE];
+                    int length;
+                    while ((length = networkData.read(buffer)) != -1 && networkData.available() != 0) {
+                        fileOutStream.write(buffer);
+                        fileOutStream.flush();
+                        System.out.println("" + buffer + length);
+                    }
+
+                    System.out.println("end");
+                    result = true;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return result;
     }
@@ -125,6 +154,7 @@ public class ProviderNetworkManagerImp implements NetworkManager {
         //client data transfer process
         if(!isEstablshedOnce){
             if(!isConnected()){
+                logger.info("wait for server DTP connecting.....");
                 openDataServerSocket();
             }
 

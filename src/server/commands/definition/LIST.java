@@ -12,10 +12,12 @@ import server.commands.ReplyRepo;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 public class LIST extends AbstractCommand {
 
     public static int READ_TO_REICEIVE_DATA = 200;
+    private static Logger logger = Logger.getLogger(LIST.class.getName());
     protected LIST(String name, String description, int [] parameterNumber, String[] parameters) {
         super(name, description, parameterNumber, parameters);
     }
@@ -32,6 +34,7 @@ public class LIST extends AbstractCommand {
         Reply replyForCommand;
         CommandExecuteResult commandExecuteResult = new CommandExecuteResult();
         String entriesString = "";
+        logger.info(""+ parameterNumber[0]);
         if(parameterNumber[0] == 0 ){
             targetListingPath = userState.getCurrentDirectory();
             entriesString = pathAccess.listDirectory(targetListingPath);

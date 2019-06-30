@@ -2,54 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5158ec28-f7f1-4b1f-9b6d-3de0bfba0e53" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/server/commands/definition/RETR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/TestingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/TestingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/client/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/client/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/client/UserManagerProccessable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/client/UserManagerProccessable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/DataTransferProcess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/process/DataTransferProcess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/DataTransferProcessThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/process/DataTransferProcessThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/DataTransferProcessable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/process/DataTransferProcessable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/EventQueue.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/FileEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/ManagerProcessable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/process/ManagerProcessable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/ProtocolInterperImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/process/ProtocolInterperImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/ReplyEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/process/StringEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/reposity/network/ConnectorNetworkManagerImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/reposity/network/ConnectorNetworkManagerImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/reposity/network/ProviderNetworkManagerImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/reposity/network/ProviderNetworkManagerImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/reposity/path/PathAccess.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/reposity/path/PathAccess.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/reposity/path/PathController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/reposity/path/PathController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/server/Commands/CommandExecuteResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/server/Commands/CommandExecuteResult.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/server/Commands/CommandsRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/server/Commands/CommandsRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/server/Commands/definition/LIST.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/server/Commands/definition/LIST.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/server/ServerProcessThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/server/ServerProcessThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FTPImptation/utils/network/DataTransferWithConnectedSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FTPImptation/utils/network/DataTransferWithConnectedSocket.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestingServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/UserManagerProccessable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/UserManagerProccessable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/DataTransferProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/DataTransferProcess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/process/DataTransferProcessThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/DataTransferProcessThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/DataTransferProcessable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/DataTransferProcessable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/event/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/EventQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/event/EventQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/FileEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/event/FileEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/ManagerProcessable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/ManagerProcessable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/ProtocolInterperImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/ProtocolInterperImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/ReplyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/event/ReplyEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/process/StringEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/process/event/StringEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reposity/file/FilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reposity/file/FilesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reposity/network/ConnectorNetworkManagerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reposity/network/ConnectorNetworkManagerImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reposity/network/ProviderNetworkManagerImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reposity/network/ProviderNetworkManagerImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reposity/path/PathAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reposity/path/PathAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reposity/path/PathController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/reposity/path/PathController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerProcessThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerProcessThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/commands/CommandExecuteResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/CommandExecuteResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/commands/CommandsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/CommandsRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/commands/ReplyRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/ReplyRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/commands/definition/LIST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/definition/LIST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/network/DataTransferWithConnectedSocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/network/DataTransferWithConnectedSocket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/commands/definition/RETR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/commands/definition/RETR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HELP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/commands/definition/HELP.java">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+            <state relative-caret-position="-78">
+              <caret line="20" column="84" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandsRepo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/commands/CommandsRepo.java">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="311">
+              <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,20 +48,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReplyRepo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/commands/ReplyRepo.java">
+      <file leaf-file-name="ServerProcessThread.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/ServerProcessThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1740">
-              <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+            <state relative-caret-position="540">
+              <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RETR.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/UserState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="52" column="69" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProviderNetworkManagerImp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reposity/network/ProviderNetworkManagerImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2640">
+              <caret line="105" column="39" lean-forward="true" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandTransmission.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectorNetworkManagerImp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/reposity/network/ConnectorNetworkManagerImp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="63" column="60" lean-forward="true" selection-start-line="63" selection-start-column="60" selection-end-line="63" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RETR.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/commands/definition/RETR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+            <state relative-caret-position="391">
+              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,42 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileEvent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/process/event/FileEvent.java">
+      <file leaf-file-name="LIST.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/commands/definition/LIST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-              <folding>
-                <element signature="e#359#360#0" expanded="true" />
-                <element signature="e#407#408#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PathAccess.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reposity/path/PathAccess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileAccess.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reposity/file/FileAccess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataTransferProcessThread.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/process/DataTransferProcessThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+            <state relative-caret-position="141">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,25 +132,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilesController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reposity/file/FilesController.java">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/commands/definition/AbstractCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1110#1111#0" expanded="true" />
-                <element signature="e#1144#1145#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -183,13 +152,18 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>spiltNewCommandStringToCommand</find>
+      <find>view</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Testing.java" />
         <option value="$PROJECT_DIR$/src/TestingClient.java" />
         <option value="$PROJECT_DIR$/src/utils/data/transmission/ByteTransmission.java" />
         <option value="$PROJECT_DIR$/src/utils/data/transmission/IntTransmission.java" />
@@ -226,20 +200,21 @@
         <option value="$PROJECT_DIR$/src/server/commands/definition/USER.java" />
         <option value="$PROJECT_DIR$/src/server/commands/manager/CommandManager.java" />
         <option value="$PROJECT_DIR$/src/reposity/path/PathAccess.java" />
-        <option value="$PROJECT_DIR$/src/TestingServer.java" />
         <option value="$PROJECT_DIR$/src/reposity/path/PathController.java" />
         <option value="$PROJECT_DIR$/src/client/Display.java" />
         <option value="$PROJECT_DIR$/src/utils/network/DataTransferWithConnectedSocket.java" />
-        <option value="$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java" />
-        <option value="$PROJECT_DIR$/src/process/DataTransferProcessThread.java" />
-        <option value="$PROJECT_DIR$/src/server/commands/definition/LIST.java" />
-        <option value="$PROJECT_DIR$/src/server/ServerProcessThread.java" />
-        <option value="$PROJECT_DIR$/src/reposity/network/ConnectorNetworkManagerImp.java" />
-        <option value="$PROJECT_DIR$/src/reposity/network/ProviderNetworkManagerImp.java" />
-        <option value="$PROJECT_DIR$/src/client/Controller.java" />
         <option value="$PROJECT_DIR$/src/server/commands/CommandsRepo.java" />
         <option value="$PROJECT_DIR$/src/server/commands/ReplyRepo.java" />
+        <option value="$PROJECT_DIR$/src/TestingServer.java" />
         <option value="$PROJECT_DIR$/src/server/commands/definition/RETR.java" />
+        <option value="$PROJECT_DIR$/src/reposity/file/FilesController.java" />
+        <option value="$PROJECT_DIR$/src/server/commands/definition/LIST.java" />
+        <option value="$PROJECT_DIR$/src/reposity/network/ProviderNetworkManagerImp.java" />
+        <option value="$PROJECT_DIR$/src/server/ServerProcessThread.java" />
+        <option value="$PROJECT_DIR$/src/process/DataTransferProcessThread.java" />
+        <option value="$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java" />
+        <option value="$PROJECT_DIR$/src/reposity/network/ConnectorNetworkManagerImp.java" />
+        <option value="$PROJECT_DIR$/src/client/Controller.java" />
       </list>
     </option>
   </component>
@@ -264,6 +239,11 @@
             <path>
               <item name="FTPImptation" type="b2602c69:ProjectViewProjectNode" />
               <item name="FTPImptation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FTPImptation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FTPImptation" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FTPImptation" type="b2602c69:ProjectViewProjectNode" />
@@ -328,6 +308,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
               <item name="commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FTPImptation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FTPImptation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+              <item name="definition" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FTPImptation" type="b2602c69:ProjectViewProjectNode" />
@@ -449,8 +437,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.TestingServer" />
         <item itemvalue="Application.TestingClient" />
       </list>
@@ -479,22 +467,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32911393" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.395218" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.0" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3164557" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.05203938" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32911393" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.39240506" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.20509383" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.3243968" />
       <window_info anchor="bottom" id="Statistic" order="7" weight="0.32630098" />
       <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.22117962" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -508,33 +496,32 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.38537273" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.395218" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.38537273" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.17828418" />
-      <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.22117962" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34036568" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49801588" visible="true" weight="0.21715818" />
+      <window_info id="Structure" order="1" sideWeight="0.5019841" side_tool="true" weight="0.22117962" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32911393" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Image Layers" order="2" />
-      <window_info id="Capture Tool" order="6" />
+      <window_info id="Designer" order="3" />
+      <window_info anchor="bottom" id="Statistic" order="7" weight="0.32630098" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286517" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994374" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.59915614" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.30520394" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.39240506" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Statistic" order="7" weight="0.32630098" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32911393" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.395218" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info id="Favorites" order="5" side_tool="true" />
@@ -616,16 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/UserState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="52" column="69" lean-forward="true" selection-start-line="52" selection-start-column="69" selection-end-line="52" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/ProgramSoftware/JavaJDK/jre/lib/rt.jar!/sun/nio/fs/WindowsDirectoryStream.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
@@ -647,6 +624,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-86">
           <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -667,13 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestingServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reposity/path/PathController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -685,6 +660,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#252#253#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -692,6 +671,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding>
+            <element signature="e#201#202#0" expanded="true" />
+            <element signature="e#249#250#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -699,13 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/Reply.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -733,34 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/manager/CommandManagerable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/process/DataTransferProcessable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/CommandExecuteResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/commands/definition/USER.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-140">
@@ -768,75 +716,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/definition/LIST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="55" column="39" lean-forward="true" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/manager/CommandManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/ServerProcessThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="43" column="27" lean-forward="true" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/network/DataTransferWithConnectedSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="56" column="28" lean-forward="true" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/process/DataTransferProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="32" column="48" lean-forward="true" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1404#1405#0" expanded="true" />
-            <element signature="e#1446#1447#0" expanded="true" />
-            <element signature="e#1505#1506#0" expanded="true" />
-            <element signature="e#1547#1548#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reposity/network/NetworkManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reposity/network/ConnectorNetworkManagerImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="99" column="30" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/reposity/network/ProviderNetworkManagerImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="139" column="13" lean-forward="true" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -858,27 +737,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/reposity/path/PathAccess.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="1200">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/TestingServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2910">
-          <caret line="111" column="33" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+        <state relative-caret-position="68">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/commands/CommandExecuteResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#489#490#0" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java">
+    <entry file="file://$PROJECT_DIR$/src/server/commands/CommandsRepo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="-240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -887,8 +774,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/commands/definition/HELP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
+        <state relative-caret-position="120">
           <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/process/event/FileEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reposity/file/FileAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reposity/file/FilesController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/process/DataTransferProcessable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/process/DataTransferProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="38" column="15" lean-forward="true" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1404#1405#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
+            <element signature="e#1505#1506#0" expanded="true" />
+            <element signature="e#1547#1548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/network/DataTransferWithConnectedSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/commands/manager/CommandManagerable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/commands/manager/CommandManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="47" column="50" lean-forward="true" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -897,8 +859,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/commands/definition/AbstractCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        <state relative-caret-position="153">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1110#1111#0" expanded="true" />
@@ -907,69 +869,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reposity/path/PathAccess.java">
+    <entry file="file://$PROJECT_DIR$/src/server/commands/ReplyRepo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="-777">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reposity/network/NetworkManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/process/DataTransferProcessThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+        <state relative-caret-position="3">
+          <caret line="64" column="60" selection-start-line="64" selection-start-column="60" selection-end-line="64" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reposity/file/FileAccess.java">
+    <entry file="file://$PROJECT_DIR$/src/server/commands/Reply.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state relative-caret-position="141">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reposity/file/FilesController.java">
+    <entry file="file://$PROJECT_DIR$/src/server/commands/definition/LIST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/process/event/FileEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding>
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/CommandsRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="141">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/ReplyRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/commands/definition/RETR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+        <state relative-caret-position="391">
+          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reposity/network/ConnectorNetworkManagerImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="63" column="60" lean-forward="true" selection-start-line="63" selection-start-column="60" selection-end-line="63" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/data/transmission/CommandTransmission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ServerProcessThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/UserState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="52" column="69" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reposity/network/ProviderNetworkManagerImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2640">
+          <caret line="105" column="39" lean-forward="true" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78">
+          <caret line="20" column="84" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

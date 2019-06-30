@@ -64,8 +64,11 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
             commandExecuteResult = commandManager.parse(commandReceived);
             replyForCommandOperation = commandExecuteResult.getReplyForCommand();
             sentReply(replyForCommandOperation);
+            Event eventForSendingReply = serverProcessThreadEventQueue .takeEvent();
+            logger.info("The state of sending reply to user"+eventForSendingReply.getData());
 
             Event operation = commandExecuteResult.getOperation();
+            Event newEventFromEventQueueForOperationResult;
            if(operation != null){
 
                if(operation.getDirection() == DataDirection.RECEIVE){
@@ -74,6 +77,11 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
                }else if(operation.getDirection() == DataDirection.SENT){
                    serverDataTransferProcess.sentData(operation);
                    logger.info("The content of sent operation to Server_DTP is " + operation.getData());
+               }
+
+               newEventFromEventQueueForOperationResult = serverProcessThreadEventQueue.takeEvent();
+               if(newEventFromEventQueueForOperationResult.getOriginal() == SERVER_DATA_TRANSFER_PROCESS_ID){
+                   logger.info("command operation data sending result: " + newEventFromEventQueueForOperationResult.getData());
                }
            }
 
@@ -122,7 +130,7 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
 
         desiredCommandEvent = (StringEvent) newEventFromEventQueue;
         logger.info("desiredCommandEvent content:" + desiredCommandEvent.getData());
-        return CommandTransmission.spiltNewCommandStringToCommand(desiredCommandEvent.getData(),logger);
+        return CommandTransmission.spiltNewCommandStringToCommand(desiredCommandEvent.getData(),"\\|",logger);
     }
 
 

@@ -7,7 +7,8 @@ public class TestingServer {
     public static void main(String[] args) throws IOException, InterruptedException {
 
       Path path = Paths.get("G:\\temp");
-      System.out.println(Files.exists(null));
+      Path workPath = path.resolve("user.txt");
+      System.out.println(workPath.toString());
     }
 
     public static int bytesToInt(byte[] bytes) {

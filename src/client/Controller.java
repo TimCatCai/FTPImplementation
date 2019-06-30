@@ -1,23 +1,24 @@
 package client;
 
 import process.*;
-import process.event.Event;
-import process.event.EventQueue;
-import process.event.ReplyEvent;
-import process.event.StringEvent;
+import process.event.*;
 import reposity.network.ConnectorNetworkManagerImp;
 import reposity.network.ProviderNetworkManagerImp;
 import server.commands.CommandsRepo;
 import server.commands.Reply;
 import server.commands.definition.AbstractCommand;
 import server.commands.definition.LIST;
+import server.commands.definition.RETR;
 import utils.data.transmission.CommandTransmission;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 
 public class Controller implements UserManagerProccessable {
+    private Path DEFAULT_USER_DIRECTORY = Paths.get(System.getProperty("user.dir"));
     private EventQueue clientEventQueue;
     private String hostName;
     private int port;
@@ -95,16 +96,16 @@ public class Controller implements UserManagerProccessable {
             // reply is accepted
             Reply commandReply = null;
             // event comes from user protocol interpreter process
-            if (USER_PI_ID.equals(newEventFromClientEventQueue.getOriginal())) {
+//            if (USER_PI_ID.equals(newEventFromClientEventQueue.getOriginal())) {
                 String[] commandReplyStrings = CommandTransmission
-                        .splitCommandString(newEventFromClientEventQueue.getData());
+                        .splitCommandString(newEventFromClientEventQueue.getData(),"\\|");
 
                 if (commandReplyStrings != null) {
                     logger.info("accepted reply state code: " + commandReplyStrings[0]);
                     commandReply = new Reply(Integer.parseInt(commandReplyStrings[0]), commandReplyStrings[1]);
                     view.display(newEventFromClientEventQueue.getData());
                 }
-            }
+//            }
 
 
             Event newEventForOperation;
@@ -121,18 +122,17 @@ public class Controller implements UserManagerProccessable {
                     get reply from server, do some operations for reply
                     always waiting for getting reply for data operation from DTP
                 */
-                while (USER_PI_ID.equals(newEventFromClientEventQueue.getOriginal())) {
-                    logger.info("new reply from server is: " + newEventFromClientEventQueue.getData());
-                    if (newEventFromClientEventQueue.getData() != null) {
-                        view.display(newEventFromClientEventQueue.getData());
-                    }
-                    newEventFromClientEventQueue = clientEventQueue.takeEvent();
-                }
+//                while (USER_PI_ID.equals(newEventFromClientEventQueue.getOriginal())) {
+//                    logger.info("new reply from server is: " + newEventFromClientEventQueue.getData());
+//                    if (newEventFromClientEventQueue.getData() != null) {
+//                        view.display(newEventFromClientEventQueue.getData());
+//                    }
+//                    newEventFromClientEventQueue = clientEventQueue.takeEvent();
+//                }
 
                 // get data transfer operation result and just display it;
                 logger.info("the data receiving or sending result from DTP:" + newEventFromClientEventQueue.getData());
                 view.display(newEventFromClientEventQueue.getData());
-
 
             }
 
@@ -172,14 +172,30 @@ public class Controller implements UserManagerProccessable {
 
     private Event hasDataOperation(String commandString, Reply commandReply) {
         Event dataEvent = null;
-        AbstractCommand newCommand = CommandTransmission.spiltNewCommandStringToCommand(commandString, logger);
-        String LISTCommandName = CommandsRepo.getCommand("LIST").getName();
+        AbstractCommand newCommand = CommandTransmission.spiltNewCommandStringToCommand(commandString," ", logger);
 
+        String LISTCommandName = CommandsRepo.getCommand("LIST").getName();
+        String RETRCommandName = CommandsRepo.getCommand("RETR").getName();
         if (LISTCommandName.equals(newCommand.getName())
                 && commandReply != null && commandReply.getStateCode() == LIST.READ_TO_REICEIVE_DATA) {
             dataEvent = new StringEvent("", DataDirection.RECEIVE, USER_PROCESS_THREAD_CONTROLLER_ID);
         }
 
+        logger.info("" + newCommand.getName() + " " + commandReply.getStateCode());
+        if (RETRCommandName.equals(newCommand.getName())
+                && commandReply != null && commandReply.getStateCode() == RETR.RETR_FILE_SUCCESS){
+            logger.info("it is a retr command ready to accept file");
+            dataEvent = new FileEvent(
+                    DEFAULT_USER_DIRECTORY
+                            .resolve(newCommand.getParameters()[0])
+                            .toString(), DataDirection.RECEIVE, USER_PROCESS_THREAD_CONTROLLER_ID);
+        }
+
         return dataEvent;
+    }
+
+
+    private void init(){
+        System.out.println("Select mode");
     }
 }

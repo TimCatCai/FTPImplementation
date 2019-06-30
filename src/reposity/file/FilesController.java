@@ -1,4 +1,5 @@
 package reposity.file;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,19 +9,20 @@ import java.nio.file.Path;
 /**
  * Manages all files operations
  * It can be only used in DIP thread
+ *
  * @author TimcatCai
  * @version 2019/06/26
  */
-public class FilesController implements FileAccess{
+public class FilesController implements FileAccess {
 
-    public FilesController( ) {
+    public FilesController() {
     }
 
     @Override
     public FileInputStream readFile(Path filePath) {
         File file = filePath.toFile();
         FileInputStream fileInputStream = null;
-        if(file.exists()){
+        if (file.exists()) {
             try {
                 fileInputStream = new FileInputStream(file);
             } catch (FileNotFoundException e) {
@@ -34,13 +36,13 @@ public class FilesController implements FileAccess{
     public FileOutputStream writeFile(Path filePath) {
         FileOutputStream out = null;
         File file = filePath.toFile();
-        if(file.exists()){
-            try {
-                out = new FileOutputStream(file);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+
+        try {
+            out = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
         return out;
     }
 
