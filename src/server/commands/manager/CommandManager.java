@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class CommandManager implements CommandManagerable {
     private UserStateable userState;
-    private Logger logger = Logger.getLogger(CommandManager.class.getName());
+//    private Logger logger = Logger.getLogger(CommandManager.class.getName());
     public CommandManager(UserStateable userState) {
         this.userState = userState;
     }
@@ -62,7 +62,7 @@ public class CommandManager implements CommandManagerable {
             }
         }
 
-        logger.info("the result of parameter check " + result);
+//        logger.info("the result of parameter check " + result);
         return result;
     }
 

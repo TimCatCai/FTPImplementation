@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @version 2019/06/27
  */
 public class DataTransferProcessThread implements Runnable {
-    private Logger logger;
+//    private Logger logger;
     private EventQueue dataEventsList;
     private FileAccess fileAccess;
     private NetworkManager DTPNetworkManager;
@@ -32,7 +32,7 @@ public class DataTransferProcessThread implements Runnable {
         this.managerThreadable = protocolInterpreter;
         this.dataEventsList = dataEventsList;
         this.threadName = threadName;
-        logger = Logger.getLogger(threadName);
+//        logger = Logger.getLogger(threadName);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class DataTransferProcessThread implements Runnable {
                     }
 
                 } else if (event.getDirection() == DataDirection.RECEIVE) {
-                    logger.info("receiving file name: " + event.getData());
+//                    logger.info("receiving file name: " + event.getData());
                     OutputStream out = fileAccess.writeFile(((FileEvent) event).getPath());
                     //reject to write file
                     if (out == null) {
@@ -74,11 +74,11 @@ public class DataTransferProcessThread implements Runnable {
                     DTPNetworkManager.sentString(event.getData());
                     acceptDataToManager = new StringEvent("sent string successfully",DataDirection.SENT,threadName);
                 } else if (event.getDirection() == DataDirection.RECEIVE) {
-                    logger.info("wait for network string data");
+//                    logger.info("wait for network string data");
                     result = DTPNetworkManager.acceptString();
 
                     acceptDataToManager = new StringEvent(result, DataDirection.RECEIVE, threadName);
-                    logger.info(" the result get from Network: " + event.getOriginal() + ": " + result);
+//                    logger.info(" the result get from Network: " + event.getOriginal() + ": " + result);
                 }
 
                 managerThreadable.replyOperationResult(acceptDataToManager);

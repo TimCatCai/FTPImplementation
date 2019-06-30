@@ -19,11 +19,11 @@ public class DataTransferWithConnectedSocket {
             int dataLength = bytesArrayOfSendingData.length;
             byte[] dataLengthBytes = IntTransmission.intToBytes(dataLength);
 
-            logger.info("the length of data sending is: " + dataLength);
+//            logger.info("the length of data sending is: " + dataLength);
             stringOut.write(dataLengthBytes);
             stringOut.flush();
 
-            logger.info("the content of data sending is: " + data);
+//            logger.info("the content of data sending is: " + data);
             stringOut.write(bytesArrayOfSendingData);
             stringOut.flush();
             result = true;
@@ -44,7 +44,7 @@ public class DataTransferWithConnectedSocket {
             int lengthOfDataAccepting = 0;
             if (networkDataStream.read(lengthBytes) != -1) {
                 lengthOfDataAccepting = ByteTransmission.bytesToInt(lengthBytes);
-                logger.info(" the length accepted: " + lengthOfDataAccepting);
+                //logger.info(" the length accepted: " + lengthOfDataAccepting);
             }
 
             byte[] dataAccepting = new byte[lengthOfDataAccepting];
@@ -55,7 +55,7 @@ public class DataTransferWithConnectedSocket {
             }
 
             result = dataAcceptingString;
-            logger.info(" the data accepted: " + dataAcceptingString);
+            //logger.info(" the data accepted: " + dataAcceptingString);
 
         } catch (IOException e) {
             e.printStackTrace();

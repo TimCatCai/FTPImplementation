@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class ProviderNetworkManagerImp implements NetworkManager {
 
-    private Logger logger = Logger.getLogger(ProviderNetworkManagerImp.class.getName());
+//    private Logger logger = Logger.getLogger(ProviderNetworkManagerImp.class.getName());
     private ServerSocket userDataTransferringSocket;
 
     private final boolean isEstablshedOnce;
@@ -72,7 +72,7 @@ public class ProviderNetworkManagerImp implements NetworkManager {
         //server operation
         if (isConnected() && isEstablshedOnce) {
             try {
-                logger.info("begin to accept file:------------u");
+//                logger.info("begin to accept file:------------u");
                 InputStream inputStreamOfSocket = socketConnected.getInputStream();
                 DataInputStream networkData = new DataInputStream(
                         new BufferedInputStream(inputStreamOfSocket)
@@ -141,7 +141,7 @@ public class ProviderNetworkManagerImp implements NetworkManager {
     public boolean sentString(String data) {
         boolean result = false;
         if (isConnected()) {
-            result = DataTransferWithConnectedSocket.sentString(socketConnected,data,logger);
+            result = DataTransferWithConnectedSocket.sentString(socketConnected,data,null);//logger);
         }
         return result;
     }
@@ -154,19 +154,19 @@ public class ProviderNetworkManagerImp implements NetworkManager {
         //client data transfer process
         if(!isEstablshedOnce){
             if(!isConnected()){
-                logger.info("wait for server DTP connecting.....");
+//                logger.info("wait for server DTP connecting.....");
                 openDataServerSocket();
             }
 
             if(isConnected()){
-                result = DataTransferWithConnectedSocket.acceptString(socketConnected,logger);
+                result = DataTransferWithConnectedSocket.acceptString(socketConnected,null);//logger);
             }
 
         }
         //server
         else{
             if (isConnected()) {
-                result = DataTransferWithConnectedSocket.acceptString(socketConnected,logger);
+                result = DataTransferWithConnectedSocket.acceptString(socketConnected,null);//logger);
             }
         }
 

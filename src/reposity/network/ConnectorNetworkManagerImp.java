@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class ConnectorNetworkManagerImp implements NetworkManager {
 
-    private Logger logger = Logger.getLogger(ConnectorNetworkManagerImp.class.getName());
+//    private Logger logger = Logger.getLogger(ConnectorNetworkManagerImp.class.getName());
     private final static int BUFFER_SIZE = 10;
     /**
      * the timeout of connecting is 30s
@@ -92,7 +92,7 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
             sendable = connectToUserDataTransferProcess();
         }
         if (sendable) {
-            DataTransferWithConnectedSocket.sentString(providerDataTransferSocket,data,logger);
+            DataTransferWithConnectedSocket.sentString(providerDataTransferSocket,data,null);//logger);
         }
         return result;
     }
@@ -102,7 +102,7 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
         String result = null;
 
         if (isConnectionValid()) {
-           result =  DataTransferWithConnectedSocket.acceptString(providerDataTransferSocket,logger);
+           result =  DataTransferWithConnectedSocket.acceptString(providerDataTransferSocket,null);//logger);
         }
         return result;
     }

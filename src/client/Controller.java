@@ -34,16 +34,19 @@ public class Controller implements UserManagerProccessable {
     private final String USER_DTP_ID = "user_dtp";
 
     private final String USER_PROCESS_THREAD_CONTROLLER_ID = "user_process_thread_controller";
-    private Logger logger = Logger.getLogger(Controller.class.getName());
+//    private Logger logger = Logger.getLogger(Controller.class.getName());
 
     public Controller(ViewInterface view) {
         this.view = view;
         clientEventQueue = new EventQueue();
     }
 
-    public void start() {
+    public void start(String path) {
 //        hostName = view.read("Hostname");
 //        port = Integer.parseInt(view.read("port"));
+        if(path.length() != 0){
+            DEFAULT_USER_DIRECTORY = Paths.get(path);
+        }
         hostName = "127.0.0.1";
         userPI = new DataTransferProcess(new ConnectorNetworkManagerImp(hostName, DEFAULT_SERVER_PORT),
                 this,
@@ -73,7 +76,7 @@ public class Controller implements UserManagerProccessable {
             }
             //The last one has no delimiter
             commandWillSent.append(commandInput[commandInput.length - 1]);
-            logger.info(commandWillSent.toString());
+//            logger.info(commandWillSent.toString());
 
             userPI.sentData(new StringEvent(commandWillSent.toString(), DataDirection.SENT,
                     USER_PROCESS_THREAD_CONTROLLER_ID));
@@ -91,7 +94,7 @@ public class Controller implements UserManagerProccessable {
             //waiting for reply
             newEventFromClientEventQueue = clientEventQueue.takeEvent();
 
-            logger.info("data accept from user_Pi:" + newEventFromClientEventQueue.getDirection());
+//            logger.info("data accept from user_Pi:" + newEventFromClientEventQueue.getDirection());
 
             // reply is accepted
             Reply commandReply = null;
@@ -101,7 +104,7 @@ public class Controller implements UserManagerProccessable {
                         .splitCommandString(newEventFromClientEventQueue.getData(),"\\|");
 
                 if (commandReplyStrings != null) {
-                    logger.info("accepted reply state code: " + commandReplyStrings[0]);
+//                    logger.info("accepted reply state code: " + commandReplyStrings[0]);
                     commandReply = new Reply(Integer.parseInt(commandReplyStrings[0]), commandReplyStrings[1]);
                     view.display(newEventFromClientEventQueue.getData());
                 }
@@ -131,7 +134,7 @@ public class Controller implements UserManagerProccessable {
 //                }
 
                 // get data transfer operation result and just display it;
-                logger.info("the data receiving or sending result from DTP:" + newEventFromClientEventQueue.getData());
+//                logger.info("the data receiving or sending result from DTP:" + newEventFromClientEventQueue.getData());
                 view.display(newEventFromClientEventQueue.getData());
 
             }
@@ -172,7 +175,7 @@ public class Controller implements UserManagerProccessable {
 
     private Event hasDataOperation(String commandString, Reply commandReply) {
         Event dataEvent = null;
-        AbstractCommand newCommand = CommandTransmission.spiltNewCommandStringToCommand(commandString," ", logger);
+        AbstractCommand newCommand = CommandTransmission.spiltNewCommandStringToCommand(commandString," ",null);//logger);
 
         String LISTCommandName = CommandsRepo.getCommand("LIST").getName();
         String RETRCommandName = CommandsRepo.getCommand("RETR").getName();
@@ -181,10 +184,10 @@ public class Controller implements UserManagerProccessable {
             dataEvent = new StringEvent("", DataDirection.RECEIVE, USER_PROCESS_THREAD_CONTROLLER_ID);
         }
 
-        logger.info("" + newCommand.getName() + " " + commandReply.getStateCode());
+//        logger.info("" + newCommand.getName() + " " + commandReply.getStateCode());
         if (RETRCommandName.equals(newCommand.getName())
                 && commandReply != null && commandReply.getStateCode() == RETR.RETR_FILE_SUCCESS){
-            logger.info("it is a retr command ready to accept file");
+//            logger.info("it is a retr command ready to accept file");
             dataEvent = new FileEvent(
                     DEFAULT_USER_DIRECTORY
                             .resolve(newCommand.getParameters()[0])
@@ -195,7 +198,5 @@ public class Controller implements UserManagerProccessable {
     }
 
 
-    private void init(){
-        System.out.println("Select mode");
-    }
+
 }

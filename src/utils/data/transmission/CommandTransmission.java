@@ -19,12 +19,12 @@ public class CommandTransmission {
             parameterNumber[0] = 0;
         }
 
-        logger.info("commandString length: " + commandString.length);
+      //  logger.info("commandString length: " + commandString.length);
 
         for(String command :commandString){
-           logger.info( command + " " );
+//           logger.info( command + " " );
         }
-        System.out.println();
+//        System.out.println();
         return new USER(commandString[0].toUpperCase(),
                 "",
                 parameterNumber,

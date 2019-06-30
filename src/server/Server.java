@@ -12,8 +12,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Server {
-    public static void main(String[] args) throws InterruptedException, IOException {
-        ThreadPoolExecutor proccessThread  = new ThreadPoolExecutor(7, 8, 5,
+    public static void start() throws InterruptedException, IOException {
+        ThreadPoolExecutor proccessThread = new ThreadPoolExecutor(7, 8, 5,
                 TimeUnit.SECONDS,
                 new LinkedBlockingDeque<>());
         ServerSocket serverSocket = new ServerSocket(21);
@@ -22,10 +22,5 @@ public class Server {
             socket = serverSocket.accept();
             proccessThread.execute(new ServerProcessThread(socket));
         }
-//        ProviderNetworkManagerImp networkManagerImp = new ProviderNetworkManagerImp(21);
-//        networkManagerImp.openDataServerSocket();
-//        TimeUnit.SECONDS.sleep(1);
-//        System.out.println(networkManagerImp.acceptString());
     }
-
 }
