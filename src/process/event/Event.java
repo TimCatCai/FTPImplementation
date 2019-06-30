@@ -1,4 +1,6 @@
-package process;
+package process.event;
+
+import process.DataDirection;
 
 /**
  * @author Timcat Cai
@@ -6,7 +8,7 @@ package process;
  */
 public class Event  {
     private String data;
-    private  DataDirection direction;
+    private DataDirection direction;
     private String original;
     public Event(String data,DataDirection direction,String original){
         this.data = data;

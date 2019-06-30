@@ -1,6 +1,6 @@
 package server.commands;
 
-import process.Event;
+import process.event.Event;
 
 public class CommandExecuteResult {
     private Event Operation;

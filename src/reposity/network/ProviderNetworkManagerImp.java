@@ -34,6 +34,12 @@ public class ProviderNetworkManagerImp implements NetworkManager {
     public ProviderNetworkManagerImp(int userDataPort) {
         this.userDataPort = userDataPort;
         isEstablshedOnce = false;
+        try {
+            userDataTransferringSocket = new ServerSocket(this.userDataPort);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -49,7 +55,6 @@ public class ProviderNetworkManagerImp implements NetworkManager {
 
     public void openDataServerSocket() {
         try {
-            userDataTransferringSocket = new ServerSocket(this.userDataPort);
             socketConnected = userDataTransferringSocket.accept();
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,7 +69,8 @@ public class ProviderNetworkManagerImp implements NetworkManager {
     @Override
     public boolean receiveFile(OutputStream out) {
         boolean result = false;
-        if (isConnected()) {
+        //server operation
+        if (isConnected() && isEstablshedOnce) {
             try {
                 InputStream inputStreamOfSocket = socketConnected.getInputStream();
                 DataInputStream networkData = new DataInputStream(
@@ -92,6 +98,13 @@ public class ProviderNetworkManagerImp implements NetworkManager {
             }
 
         }
+
+        //client data transfer process
+        if(!isEstablshedOnce){
+            if(!isConnected()){
+                openDataServerSocket();
+            }
+        }
         return result;
     }
 
@@ -107,18 +120,33 @@ public class ProviderNetworkManagerImp implements NetworkManager {
     @Override
     public String acceptString() {
         String result = null;
-        if (isConnected()) {
-            result = DataTransferWithConnectedSocket.acceptString(socketConnected,logger);
+
+
+        //client data transfer process
+        if(!isEstablshedOnce){
+            if(!isConnected()){
+                openDataServerSocket();
+            }
+
+            if(isConnected()){
+                result = DataTransferWithConnectedSocket.acceptString(socketConnected,logger);
+            }
+
         }
+        //server
+        else{
+            if (isConnected()) {
+                result = DataTransferWithConnectedSocket.acceptString(socketConnected,logger);
+            }
+        }
+
+
         return result;
     }
 
     private boolean isConnected() {
         return socketConnected != null && !socketConnected.isClosed();
     }
-
-
-
 
 
 }

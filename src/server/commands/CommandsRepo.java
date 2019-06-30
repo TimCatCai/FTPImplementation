@@ -11,27 +11,27 @@ public class CommandsRepo {
         commandsList.put("USER",new USER(
                 "USER",
             " USER <SP> <username> <CRLF>\n" +
-                        "<username> ::= <string>",
+                        "<username> ::= <string>\n",
                         new int[]{1}
                 ));
 
         commandsList.put("PASS",new PASS(
                 "PASS",
                 "PASS <SP> <password> <CRLF>\n" +
-                        "<password> ::= <string>",
+                        "<password> ::= <string>\n",
                 new int[]{1}
         ));
 
         commandsList.put("CWD", new CWD(
                 "CWD",
                 "CWD <SP> <pathname> <CRLF>\n"
-                         + "<pathname> ::= <string>",
+                         + "<pathname> ::= <string>\n",
                 new int[]{1}
         ));
 
         commandsList.put("CDUP",
                 new CDUP("CDUP",
-                        " CDUP <CRLF> ",
+                        " CDUP <CRLF>\n ",
                         new int[]{0}));
         commandsList.put("HELP",
                 new HELP(
@@ -45,9 +45,17 @@ public class CommandsRepo {
                         "LIST",
                         "LIST (without parameter)(current dir)\n" +
                                 "or LIST [<SP> <pathname>] <CRLF>\n"
-                        + "<pathname> ::= <string>",
+                        + "<pathname> ::= <string>\n",
                         new int[]{0,1}
                 ));
+        commandsList.put("RETR",
+                new RETR(
+                        "RETR",
+                        "RETR <SP> <pathname> <CRLF>\n"
+                        + "<pathname> ::= <string>\n",
+                new int[]{1}
+                ));
+
     }
 
     public static CommandsRepo getInstance(){

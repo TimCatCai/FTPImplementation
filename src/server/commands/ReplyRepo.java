@@ -17,6 +17,9 @@ public class ReplyRepo {
 
     //path
     public final static int NO_SUCH_DIRECTORY = 431;
+
+    //file
+    public final static int FILE_READY = 250;
     private ReplyRepo(){
         replysList.put(502 ,new Reply(
                 502 ,
@@ -40,6 +43,13 @@ public class ReplyRepo {
 
         replysList.put( 431,
                 new Reply(431,"No such directory"));
+
+        replysList.put(250,
+                new Reply(250,"Requested file action okay, completed."));
+
+        replysList.put(550,
+                new Reply(550,"Requested action not taken.\n "+
+                "File unavailable (e.g., file not found, no access)"));
     }
 
     public static Reply getReply(int stateCode){

@@ -1,5 +1,7 @@
 package process;
 
+import process.event.Event;
+
 public interface DataTransferProcessable {
     /**
      * sets data through DTP

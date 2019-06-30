@@ -3,6 +3,7 @@ package reposity.path;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Iterator;
 import java.util.stream.Stream;
 
 /**
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
  * @author TimcatCai
  * @version 2019/06/26
  */
+
 public class PathController implements PathAccess {
 
 
@@ -36,7 +38,7 @@ public class PathController implements PathAccess {
 
     @Override
     public boolean isDirectoryExists(Path path) {
-        return Files.exists(path);
+        return isDirectory(path) && Files.exists(path);
     }
 
     @Override
@@ -56,6 +58,34 @@ public class PathController implements PathAccess {
 
     @Override
     public boolean isDirectory(Path path) {
-        return Files.isDirectory(path);
+        return path != null && Files.isDirectory(path);
+    }
+
+    /**
+     * if path  doesn't exists, return empty string
+     * @param path
+     * @return
+     */
+    @Override
+    public String listDirectory(Path path) {
+        String result = " ";
+        Stream<Path> pathsList;
+        if(isDirectoryExists(path)){
+            try {
+                pathsList = Files.list(path);
+                StringBuilder builder = new StringBuilder();
+                Iterator<Path> iterator =  pathsList.iterator();
+                while (iterator.hasNext()){
+                    path = iterator.next();
+                    builder.append(path.toString());
+                    builder.append("\n");
+                }
+                result = builder.toString();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
     }
 }

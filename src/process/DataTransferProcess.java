@@ -1,5 +1,7 @@
 package process;
 
+import process.event.Event;
+import process.event.EventQueue;
 import reposity.file.FilesController;
 import reposity.network.NetworkManager;
 

@@ -3,17 +3,20 @@ package server;
 import client.UserState;
 import client.UserStateable;
 import process.*;
+import process.event.Event;
+import process.event.EventQueue;
+import process.event.ReplyEvent;
+import process.event.StringEvent;
 import reposity.network.ConnectorNetworkManagerImp;
 import reposity.network.ProviderNetworkManagerImp;
 import server.commands.*;
 import server.commands.definition.AbstractCommand;
-import server.commands.definition.USER;
 import server.commands.manager.CommandManager;
 import server.commands.manager.CommandManagerable;
+import utils.data.transmission.CommandTransmission;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Arrays;
 import java.util.logging.Logger;
 
 public class ServerProcessThread implements Runnable , ManagerProcessable {
@@ -64,10 +67,13 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
 
             Event operation = commandExecuteResult.getOperation();
            if(operation != null){
+
                if(operation.getDirection() == DataDirection.RECEIVE){
+                   logger.info("The content of operation to Server_DTP is " + operation.getData());
                    serverDataTransferProcess.receiveData(operation);
                }else if(operation.getDirection() == DataDirection.SENT){
                    serverDataTransferProcess.sentData(operation);
+                   logger.info("The content of sent operation to Server_DTP is " + operation.getData());
                }
            }
 
@@ -95,11 +101,14 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         this.serverCommandsTransferProcess.receiveData(desiredCommandEvent);
         newEventFromEventQueue = serverProcessThreadEventQueue.takeEvent();
 
-        while (! newEventFromEventQueue.getOriginal().equals(SERVER_COMMANDS_TRANSFER_PROCESS_ID)){
+        while (! newEventFromEventQueue.getOriginal().equals(SERVER_COMMANDS_TRANSFER_PROCESS_ID)
+                || newEventFromEventQueue.getDirection() == DataDirection.SENT){
 
             if(newEventFromEventQueue instanceof StringEvent){
 
-            }else if(newEventFromEventQueue instanceof ReplyEvent){
+            }
+
+            else if(newEventFromEventQueue instanceof ReplyEvent){
                 /*
                     这里不对从数据传送层（ServerDataTransferProcess)收到的ReplyEvent进行任何处理，
                     直接回复给User端。本来是应该对收到的ReplyEvent进行解析之后，得到对应的状态码及
@@ -112,35 +121,11 @@ public class ServerProcessThread implements Runnable , ManagerProcessable {
         }
 
         desiredCommandEvent = (StringEvent) newEventFromEventQueue;
-       logger.info("desiredCommandEvent content:" + desiredCommandEvent.getData());
-        return spiltNewCommand(desiredCommandEvent.getData());
+        logger.info("desiredCommandEvent content:" + desiredCommandEvent.getData());
+        return CommandTransmission.spiltNewCommandStringToCommand(desiredCommandEvent.getData(),logger);
     }
 
-    private AbstractCommand spiltNewCommand(String data){
-        String [] commandString = data.split("\\|");
-        String [] parameters = null ;
-        int [] parameterNumber = new int[1] ;
-        if(commandString.length >= 2){
-            parameters = Arrays.copyOfRange(commandString,1,commandString.length);
-            parameterNumber[0] = parameters.length;
-        }else{
-            parameterNumber[0] = 0;
-        }
 
-        logger.info(" in spiltNewCommand commandString length: " + commandString.length);
-
-        for(String command :commandString){
-            System.out.print(command + " " );
-
-        }
-        System.out.println();
-
-
-        return new USER(commandString[0].toUpperCase(),
-                "",
-                parameterNumber,
-                parameters);
-    }
 
     private void sentReply(Reply reply){
         if(reply != null){

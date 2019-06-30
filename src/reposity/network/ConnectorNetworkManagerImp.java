@@ -34,8 +34,9 @@ public class ConnectorNetworkManagerImp implements NetworkManager {
     }
 
     public ConnectorNetworkManagerImp(InetAddress inetAddress,int userDataTransferPort ){
-        this.userHostName = new String(inetAddress.getAddress());
-
+//            this.userHostName = new String(inetAddress.getAddress());
+        this.userHostName = "127.0.0.1";
+        this.userDataTransferPort = userDataTransferPort;
     }
 
     /**

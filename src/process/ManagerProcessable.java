@@ -1,5 +1,7 @@
 package process;
 
+import process.event.Event;
+
 /**
  * the interfaces of user protocol interpreter process for communication with DTP
  * @author TimcatCai

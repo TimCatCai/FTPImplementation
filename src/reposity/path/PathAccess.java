@@ -40,4 +40,6 @@ public interface PathAccess {
     boolean isDirectory(Path path);
 
 
+    String listDirectory(Path path);
+
 }

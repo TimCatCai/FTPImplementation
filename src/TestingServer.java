@@ -1,15 +1,13 @@
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class TestingServer {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-       int [] a = new int [0];
-       for (int b: a){
-           System.out.println(b);
-       }
-       System.out.println(a.length);
+      Path path = Paths.get("G:\\temp");
+      System.out.println(Files.exists(null));
     }
 
     public static int bytesToInt(byte[] bytes) {

@@ -23,7 +23,7 @@ public class DataTransferWithConnectedSocket {
             stringOut.write(dataLengthBytes);
             stringOut.flush();
 
-            logger.info("the content of data is: " + data);
+            logger.info("the content of data sending is: " + data);
             stringOut.write(bytesArrayOfSendingData);
             stringOut.flush();
             result = true;

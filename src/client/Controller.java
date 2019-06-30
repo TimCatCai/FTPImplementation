@@ -1,14 +1,23 @@
 package client;
 
 import process.*;
+import process.event.Event;
+import process.event.EventQueue;
+import process.event.ReplyEvent;
+import process.event.StringEvent;
 import reposity.network.ConnectorNetworkManagerImp;
 import reposity.network.ProviderNetworkManagerImp;
+import server.commands.CommandsRepo;
+import server.commands.Reply;
+import server.commands.definition.AbstractCommand;
+import server.commands.definition.LIST;
+import utils.data.transmission.CommandTransmission;
 
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 
-public class Controller implements UserManagerProccessable{
+public class Controller implements UserManagerProccessable {
     private EventQueue clientEventQueue;
     private String hostName;
     private int port;
@@ -20,39 +29,43 @@ public class Controller implements UserManagerProccessable{
     private final int DEFAULT_USER_DATA_PORT = 20;
 
 
-    private final String USER_PI = "user_pi";
-    private final  String USER_DTP = "user_dtp";
+    private final String USER_PI_ID = "user_pi";
+    private final String USER_DTP_ID = "user_dtp";
 
-    private final String USER_PROCCESS_THREAD_CONTROLLER = "user_process_thread_controller";
+    private final String USER_PROCESS_THREAD_CONTROLLER_ID = "user_process_thread_controller";
     private Logger logger = Logger.getLogger(Controller.class.getName());
 
-    public Controller(ViewInterface view){
+    public Controller(ViewInterface view) {
         this.view = view;
         clientEventQueue = new EventQueue();
     }
 
-    public void start(){
+    public void start() {
 //        hostName = view.read("Hostname");
 //        port = Integer.parseInt(view.read("port"));
         hostName = "127.0.0.1";
-        userPI = new DataTransferProcess(new ConnectorNetworkManagerImp(hostName,DEFAULT_SERVER_PORT),
+        userPI = new DataTransferProcess(new ConnectorNetworkManagerImp(hostName, DEFAULT_SERVER_PORT),
                 this,
-                USER_PI
-                );
+                USER_PI_ID
+        );
         userDTP = new DataTransferProcess(new ProviderNetworkManagerImp(DEFAULT_USER_DATA_PORT),
                 this,
-                USER_DTP
-                );
+                USER_DTP_ID
+        );
         Event newEventFromClientEventQueue;
-        String data;
+        String commandInputString;
         Scanner scanner = new Scanner(System.in);
         StringBuilder commandWillSent;
-        while(true){
-            data = scanner.nextLine();
+        while (true) {
+            commandInputString = scanner.nextLine();
+            if (!isCommandInputValid(commandInputString)) {
+                System.out.println("Input command please!");
+                continue;
+            }
 
-            String [] commandInput  = data.split(" ");
-            commandWillSent= new StringBuilder();
-            for(int i = 0; i <  commandInput.length - 1; i++){
+            String[] commandInput = commandInputString.split(" ");
+            commandWillSent = new StringBuilder();
+            for (int i = 0; i < commandInput.length - 1; i++) {
                 commandWillSent.append(commandInput[i]);
                 //add delimiter for each one
                 commandWillSent.append("|");
@@ -61,12 +74,69 @@ public class Controller implements UserManagerProccessable{
             commandWillSent.append(commandInput[commandInput.length - 1]);
             logger.info(commandWillSent.toString());
 
-            userPI.sentData(new StringEvent(commandWillSent.toString(),DataDirection.SENT,
-                    USER_PROCCESS_THREAD_CONTROLLER));
-            userPI.receiveData(new StringEvent("",DataDirection.RECEIVE,
-                    USER_PROCCESS_THREAD_CONTROLLER));
+            userPI.sentData(new StringEvent(commandWillSent.toString(), DataDirection.SENT,
+                    USER_PROCESS_THREAD_CONTROLLER_ID));
+
+            // flit sending command result
+            // waiting for sending result
             newEventFromClientEventQueue = clientEventQueue.takeEvent();
-            view.display(newEventFromClientEventQueue.getData());
+            if (USER_PI_ID.equals(newEventFromClientEventQueue.getOriginal())) {
+                view.display(newEventFromClientEventQueue.getData());
+            }
+
+            //notify USR_PI to begin to read reply from server
+            userPI.receiveData(new StringEvent("", DataDirection.RECEIVE,
+                    USER_PROCESS_THREAD_CONTROLLER_ID));
+            //waiting for reply
+            newEventFromClientEventQueue = clientEventQueue.takeEvent();
+
+            logger.info("data accept from user_Pi:" + newEventFromClientEventQueue.getDirection());
+
+            // reply is accepted
+            Reply commandReply = null;
+            // event comes from user protocol interpreter process
+            if (USER_PI_ID.equals(newEventFromClientEventQueue.getOriginal())) {
+                String[] commandReplyStrings = CommandTransmission
+                        .splitCommandString(newEventFromClientEventQueue.getData());
+
+                if (commandReplyStrings != null) {
+                    logger.info("accepted reply state code: " + commandReplyStrings[0]);
+                    commandReply = new Reply(Integer.parseInt(commandReplyStrings[0]), commandReplyStrings[1]);
+                    view.display(newEventFromClientEventQueue.getData());
+                }
+            }
+
+
+            Event newEventForOperation;
+            // check whether data operation is need or not
+            if ((newEventForOperation = hasDataOperation(commandInputString, commandReply)) != null) {
+                if (newEventForOperation.getDirection() == DataDirection.SENT) {
+                    userDTP.sentData(newEventForOperation);
+                } else {
+                    userDTP.receiveData(newEventForOperation);
+                }
+
+                newEventFromClientEventQueue = clientEventQueue.takeEvent();
+                /*
+                    get reply from server, do some operations for reply
+                    always waiting for getting reply for data operation from DTP
+                */
+                while (USER_PI_ID.equals(newEventFromClientEventQueue.getOriginal())) {
+                    logger.info("new reply from server is: " + newEventFromClientEventQueue.getData());
+                    if (newEventFromClientEventQueue.getData() != null) {
+                        view.display(newEventFromClientEventQueue.getData());
+                    }
+                    newEventFromClientEventQueue = clientEventQueue.takeEvent();
+                }
+
+                // get data transfer operation result and just display it;
+                logger.info("the data receiving or sending result from DTP:" + newEventFromClientEventQueue.getData());
+                view.display(newEventFromClientEventQueue.getData());
+
+
+            }
+
+
         }
     }
 
@@ -94,5 +164,22 @@ public class Controller implements UserManagerProccessable{
 
     public int getPort() {
         return port;
+    }
+
+    private boolean isCommandInputValid(String command) {
+        return command.length() != 0;
+    }
+
+    private Event hasDataOperation(String commandString, Reply commandReply) {
+        Event dataEvent = null;
+        AbstractCommand newCommand = CommandTransmission.spiltNewCommandStringToCommand(commandString, logger);
+        String LISTCommandName = CommandsRepo.getCommand("LIST").getName();
+
+        if (LISTCommandName.equals(newCommand.getName())
+                && commandReply != null && commandReply.getStateCode() == LIST.READ_TO_REICEIVE_DATA) {
+            dataEvent = new StringEvent("", DataDirection.RECEIVE, USER_PROCESS_THREAD_CONTROLLER_ID);
+        }
+
+        return dataEvent;
     }
 }

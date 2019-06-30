@@ -1,4 +1,7 @@
-package process;
+package process.event;
+
+import process.DataDirection;
+import process.event.Event;
 
 public class ReplyEvent extends Event {
 
